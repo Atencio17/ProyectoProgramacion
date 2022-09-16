@@ -90,3 +90,11 @@
                 margin-left: 20px;
                 margin-right: 20px;
             }
+            
+            .botonsection {
+                margin-top: 10px;
+                background-color: #68D8D6;
+                outline: none;
+                border: none;
+                border-radius: 10px;
+            }
