@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>agendar citas</title>
+    <title>Administrador página principal</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../recursos/images/cecarlogo.png">
@@ -27,33 +27,31 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="consultarcita.html"><button type="button " class="botones ">Consultar y cancelar cita</button></a><br>
-                <a href="evoluciondetratamiento.html"><button type="button " class="botones ">Evolución del tratamiento</button></a><br>
-                <a href="informacionpersonal.html"><button type="button " class="botones ">Información personal</button></a><br>
-                <a href="oficinavirtual.html"><button type="button " class="botones ">Oficina virtual</button></a>
+                <a href="administradorcategorias.html"><button type="button " class="botones ">Definir categorias</button></a><br>
+                <a href="administradormateriasprimas.html"><button type="button " class="botones ">Definir materias primas o reactivos</button></a><br>
             </div>
         </aside>
 
         <section>
-            <h4 style="text-align: center; ">AGENDAR CITAS</h4>
+            <h4 style="text-align: center; ">PAGINA PRINCIPAL ADMINISTRADOR</h4>
             <table>
                 <tr>
                     <th style="text-align:center ; "></th>
+                    <th style="text-align:center; justify-content: center; " colspan="2 "></th>
                 </tr>
                 <tr>
                     <td></td>
-                    <td style="width: 100%; ">
-                        <p>Ingrese la fecha y la hora en la que desea agendar la cita: </p>
-
-                        <label for="start">fecha: </label>
-
-                        <input type="date" id="start" name="trip-start" value="2022-09-10" min="2022-09-10" max="2022-12-31">
-                        <label for="start">hora: </label>
-                        <input type="time" id="appt" name="appt" step="600" min="06:00" max="17:00"><br>
-                        <button type=" button " class="botonsection ">Agendar cita</button>
+                    <td style="width: 70%; ">
+                        <p>Desde aquí podrá definir categorias y definir materias primas o reactivos que se utilizarán en los servicios.</p>
 
                     </td>
-
+                    <td>
+                        <div style="display: flex; align-items: center; flex-direction: column; ">
+                            <img src=" ../recursos/images/enfermera.jpg " alt="Enfermera " style="width: 100px; height: 100px; margin-top:5px; ">
+                            <img src=" ../recursos/images/secretaria.jpg " alt="Enfermera " style="width: 100px; height: 100px; margin-top:5px; ">
+                            <img src=" ../recursos/images/enfermero.jpg " alt="Enfermera " style="width: 100px; height: 100px; margin-top:5px; ">
+                        </div>
+                    </td>
                 </tr>
 
             </table>
@@ -61,17 +59,17 @@
     </div>
 
     <footer>
-        <div style="display: flex; justify-content: space-around; ">
+        <div style="display: flex; justify-content: space-around;">
             <div>
                 <h1>CECAR</h1>
-                <a href=" " style="text-decoration: none; "><img src="../recursos/images/cecarlogo.png " alt="facebook " class="estilogo "></a>
+                <a href=" " style="text-decoration: none; "><img src="../recursos/images/cecarlogo.png " alt="facebook" class="estilogo"></a>
             </div>
             <div>
                 <ul>
                     <h6>Contactanos</h6>
                     <div>
                         facebook
-                        <a href=" " style="text-decoration: none; "><img src="../recursos/images/facebook.png " alt="facebook " clas></a><br>Instagram
+                        <a href=" " style="text-decoration: none;"><img src="../recursos/images/facebook.png " alt="facebook"></a><br>Instagram
                         <a href=" "><img src="../recursos/images/instagram.png " alt="facebook "></a><br> numero telefono
                         <a href=" "><img src="../recursos/images/telefono.png " alt=" "></a><br> direccioncorreo@example.com
                         <a href=" "><img src="../recursos/images/gmail.png " alt=" "></a><br>

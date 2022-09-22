@@ -103,3 +103,11 @@
                 width: 100px;
                 height: 100px;
             }
+            
+            .botonagendarcita {
+                margin-top: 10px;
+                background-color: #68D8D6;
+                outline: none;
+                border: none;
+                border-radius: 10px;
+            }
