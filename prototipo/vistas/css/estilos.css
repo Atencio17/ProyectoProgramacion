@@ -103,6 +103,7 @@
                 width: 100px;
                 height: 100px;
             }
+<<<<<<< HEAD
             
             .botonagendarcita {
                 margin-top: 10px;
@@ -110,4 +111,13 @@
                 outline: none;
                 border: none;
                 border-radius: 10px;
+=======
+
+            .bordesDiv th{
+                border: 2px solid black;
+            }
+
+            .bordesDiv td{
+                border: 2px solid black;
+>>>>>>> 3a7b56f4a56da895067a3d84d1c9a31036dc308e
             }

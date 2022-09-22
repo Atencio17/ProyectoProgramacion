@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de elementos</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="../js/funcionalidad.js"></script>
+    <script>
+        function agregarTabla() {
+          var tabla1 = document.getElementById("tabla").value;
+
+          var columna1 = document.getElementById("columna1").value;
+          var columna2 = document.getElementById("columna2").value;
+          var columna3 = document.getElementById("columna3").value;
+          var columna4 = document.getElementById("columna4").value;
+
+          var tagTr = crearTag("tr");
+          var tagTd1 = crearTagConTexto("td",columna1);
+          var tagTd2 = crearTagConTexto("td",columna2);
+          var tagTd3 = crearTagConTexto("td",columna3);
+          var tagTd4 = crearTagConTexto("td",columna4);
+
+          agregarElementoContenedor(tagTr,tagTd1);
+          agregarElementoContenedor(tagTr,tagTd2);
+          agregarElementoContenedor(tagTr,tagTd3);
+          agregarElementoContenedor(tagTr,tagTd4);
+          agregarElementoContenedor(tabla,tagTr);
+        }
+      </script>
+</head>
+
+<body>
+    <header>
+        <h1>CECAR</h1>
+    </header>
+
+    <nav>
+        <a href=""><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href=" " style="justify-content: flex-end; ">Cerrar sesión</a>
+    </nav>
+
+    <div class="row">
+        <aside>
+            <div class="divaside ">
+                <h4>Nombre usuario</h4>
+                <a href="administradorgestionelementos.html"><button type="button " class="botones ">Gestión de elementos</button></a><br>
+                <a href="profesionalhistoriaclinica.html"><button type="button " class="botones ">Gestión de servicios</button></a><br>
+                <a href="#"><button type="button " class="botones ">Gestión de profesionales</button></a><br>
+                <a href="#"><button type="button " class="botones ">Definición de reglas de evolución</button></a><br>
+                <a href="#"><button type="button " class="botones ">Gestionar categorias</button></a><br>
+            </div>
+        </aside>
+
+        <section>
+            <h4 style="text-align: center; ">GESTIÓN DE ELEMENTOS</h4>
+            <form action="">
+                <table>
+                    <tr>
+                        <td style="text-align: end;">
+                            <label for="">Identificador</label>
+                            <input type="text" name="" id="columna1">
+                        </td>
+                        <td style="text-align: end;">
+                            <label for="">Nombre</label>
+                            <input type="text" name="" id="columna2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: end;">
+                            <label for="">Costo</label>
+                            <input type="text" name="" id="columna3">
+                        </td>
+                        <td style="text-align: end;">
+                            <div style="text-align: center; margin-left: 50px;">
+                                <label for="">Descripción</label> <br>
+                            </div>
+                            <textarea name="" cols="23" rows="5" id="columna4"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="botonsection" onclick="agregarTabla()">Guardar</button>
+                        </td>
+                        <td style="text-align: end;">
+                            <button type="button" class="botonsection">Actualizar</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <br><br>
+            <div class="bordesDiv" style="text-align: center;">
+                <table style="width: 100%;" id="tabla">
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Nombre</th>
+                        <th>Costo</th>
+                        <th>Descripción</th>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div style="display: flex; justify-content: space-around;">
+            <div>
+                <h1>CECAR</h1>
+                <a href=" " style="text-decoration: none;"><img src="../recursos/images/cecarlogo.png " alt="facebook" class="estilogo"></a>
+            </div>
+            <div>
+                <ul>
+                    <h6>Contactanos</h6>
+                    <div>
+                        facebook
+                        <a href=" " style="text-decoration: none;"><img src="../recursos/images/facebook.png " alt="facebook"></a><br>Instagram
+                        <a href=" "><img src="../recursos/images/instagram.png " alt="facebook "></a><br> numero telefono
+                        <a href=" "><img src="../recursos/images/telefono.png " alt=" "></a><br> direccioncorreo@example.com
+                        <a href=" "><img src="../recursos/images/gmail.png " alt=" "></a><br>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
