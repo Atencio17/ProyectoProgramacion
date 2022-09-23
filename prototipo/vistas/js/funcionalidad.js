@@ -42,17 +42,17 @@ function loguear() {
 
     var usuario = document.getElementById("usuario").value;
     var password = document.getElementById("password").value;
-    
-    if (usuario== "admin" && password=="123") {
-        window.location.href = "administrator.html";
-    } else if (usuario== "gerente" && password=="123") {
-        window.location.href = "manager.html";
+
+    if (usuario== "gerente" && password=="123") {
+        window.location.href = "gerentepaginaprincipal.html";
+    } else if (usuario== "profesional" && password=="123") {
+        window.location.href = "profesionalpaginaprincipal.html";
     } else if (usuario== "secretario" && password=="123") {
-        window.location.href = "secretary.html";
+        window.location.href = "secretariapaginaprincipal.html";
     } else if (usuario == "cliente" && password == "123"){
-        window.location.href = "customer.html";
-    } else if (usuario == "vendedor" && password =="123"){
-        window.location.href = "seller.html";
+        window.location.href = "oficinavirtual.html";
+    } else if (usuario == "admin" && password =="123"){
+        window.location.href = "administradorpaginaprincipal.html";
     }else {
         alert("Usuario o password errado");
     }
