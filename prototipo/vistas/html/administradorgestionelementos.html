@@ -11,26 +11,26 @@
     <script src="../js/funcionalidad.js"></script>
     <script>
         function agregarTabla() {
-          var tabla1 = document.getElementById("tabla").value;
+            var tabla1 = document.getElementById("tabla").value;
 
-          var columna1 = document.getElementById("columna1").value;
-          var columna2 = document.getElementById("columna2").value;
-          var columna3 = document.getElementById("columna3").value;
-          var columna4 = document.getElementById("columna4").value;
+            var columna1 = document.getElementById("columna1").value;
+            var columna2 = document.getElementById("columna2").value;
+            var columna3 = document.getElementById("columna3").value;
+            var columna4 = document.getElementById("columna4").value;
 
-          var tagTr = crearTag("tr");
-          var tagTd1 = crearTagConTexto("td",columna1);
-          var tagTd2 = crearTagConTexto("td",columna2);
-          var tagTd3 = crearTagConTexto("td",columna3);
-          var tagTd4 = crearTagConTexto("td",columna4);
+            var tagTr = crearTag("tr");
+            var tagTd1 = crearTagConTexto("td", columna1);
+            var tagTd2 = crearTagConTexto("td", columna2);
+            var tagTd3 = crearTagConTexto("td", columna3);
+            var tagTd4 = crearTagConTexto("td", columna4);
 
-          agregarElementoContenedor(tagTr,tagTd1);
-          agregarElementoContenedor(tagTr,tagTd2);
-          agregarElementoContenedor(tagTr,tagTd3);
-          agregarElementoContenedor(tagTr,tagTd4);
-          agregarElementoContenedor(tabla,tagTr);
+            agregarElementoContenedor(tagTr, tagTd1);
+            agregarElementoContenedor(tagTr, tagTd2);
+            agregarElementoContenedor(tagTr, tagTd3);
+            agregarElementoContenedor(tagTr, tagTd4);
+            agregarElementoContenedor(tabla, tagTr);
         }
-      </script>
+    </script>
 </head>
 
 <body>
