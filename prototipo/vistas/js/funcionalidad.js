@@ -16,7 +16,7 @@ function crearTagConTexto(tagHTML, texto) {
 function crearTagImage(path) {
     var tagIMG = document.createElement("img");
     tagIMG.src = path;
-    return tagIMG;    
+    return tagIMG;
 }
 
 function agregarElemento(elemento) {
@@ -24,7 +24,7 @@ function agregarElemento(elemento) {
 }
 
 function crearTagA(texto, url) {
-    var tagIMG = crearTagConTexto("a",texto);
+    var tagIMG = crearTagConTexto("a", texto);
     tagIMG.href = url;
     return tagIMG;
 }
@@ -43,17 +43,17 @@ function loguear() {
     var usuario = document.getElementById("usuario").value;
     var password = document.getElementById("password").value;
 
-    if (usuario== "gerente" && password=="123") {
+    if (usuario == "gerente" && password == "123") {
         window.location.href = "gerentepaginaprincipal.html";
-    } else if (usuario== "profesional" && password=="123") {
+    } else if (usuario == "profesional" && password == "123") {
         window.location.href = "profesionalpaginaprincipal.html";
-    } else if (usuario== "secretario" && password=="123") {
+    } else if (usuario == "secretaria" && password == "123") {
         window.location.href = "secretariapaginaprincipal.html";
-    } else if (usuario == "cliente" && password == "123"){
+    } else if (usuario == "cliente" && password == "123") {
         window.location.href = "oficinavirtual.html";
-    } else if (usuario == "admin" && password =="123"){
+    } else if (usuario == "admin" && password == "123") {
         window.location.href = "administradorpaginaprincipal.html";
-    }else {
+    } else {
         alert("Usuario o password errado");
     }
 }
