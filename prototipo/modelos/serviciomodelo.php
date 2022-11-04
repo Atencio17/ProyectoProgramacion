@@ -1,15 +1,27 @@
 <?php
 
-class Categoria{
+class Servicio{
     public $idservicio;
-    public $nombre;
-    public $costo;
-    public $precio;
+    public $nombreServicio;
+    public $costoServicio;
+    public $descripcionServicio;
+    public $presionSistolica;
+    public $presionDiastolica;
+    public $peso;
+    public $idCategoria;
+    
 
-    function __construct($idcategoria,$categoria){
+    function __construct($idservicio,$nombreServicio, $costoServicio, $descripcionServicio, $presionSistolica, $presionDiastolica, $peso, $idCategoria){
 
-        $this->idcategoria = $idcategoria;
-        $this->categoria = $categoria;
+        $this->idservicio = $idservicio;
+        $this->nombreServicio = $nombreServicio;
+        $this->costoServicio = $costoServicio;
+        $this->descripcionServicio = $descripcionServicio;
+        $this->presionSistolica = $presionSistolica;
+        $this->presionDiastolica = $presionDiastolica;
+        $this->peso = $peso;
+        $this->idCategoria = $idCategoria;
+
 
     }
 
