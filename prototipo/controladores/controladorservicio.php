@@ -8,7 +8,7 @@ class ControladorServicios extends ConectarMySQL implements InterfazControladore
     private $tabla = "servicios";
 
     public function guardar($objeto){
-        $sql = "call gestionarservicios(01,?,?,?,?,?,?,?,?)";
+        $sql = "call gestionarservicios(0,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
         $sentencia->bind_param("isisiiii", $objeto->idservicio, $objeto->nombreServicio, $objeto->costoServicio, $objeto->descripcionServicio, $objeto->presionSistolica, $objeto->presionDiastolica, $objeto->peso, $objeto->idCategoria);
         $sentencia->execute();

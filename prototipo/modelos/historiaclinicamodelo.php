@@ -9,12 +9,11 @@ class HistoriaClinica{
     public $diagnostico;
     public $numeroDeSesiones;
     public $sesionesTotales;
-    public $historiaClinica;
     public $evolucion;
     public $idCliente;
     public $tipoIdentificacion;
 
-    function __construct($idHistoriaClinica,$presionSistolica,$presionDiastolica,$peso,$derivacion,$diagnostico,$numeroDeSesiones,$sesionesTotales,$historiaClinica,$evolucion,$idCliente,$tipoIdentificacion){
+    function __construct($idHistoriaClinica,$presionSistolica,$presionDiastolica,$peso,$derivacion,$diagnostico,$numeroDeSesiones,$sesionesTotales,$evolucion,$idCliente,$tipoIdentificacion){
 
         $this->idHistoriaClinica = $idHistoriaClinica;
         $this->presionSistolica = $presionSistolica;
@@ -24,7 +23,6 @@ class HistoriaClinica{
         $this->diagnostico = $diagnostico;
         $this->numeroDeSesiones = $numeroDeSesiones;
         $this->sesionesTotales = $sesionesTotales;
-        $this->historiaClinica = $historiaClinica;
         $this->evolucion = $evolucion;
         $this->idCliente = $idCliente;
         $this->tipoIdentificacion = $tipoIdentificacion;

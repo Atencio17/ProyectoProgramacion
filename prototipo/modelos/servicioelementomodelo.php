@@ -1,6 +1,6 @@
 <?php
 
-class ServicioModelo{
+class ServicioElemento{
     public $idServicio;
     public $idElemento;
 
