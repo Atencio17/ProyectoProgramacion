@@ -8,15 +8,15 @@ class ControladorServicios extends ConectarMySQL implements InterfazControladore
     private $tabla = "servicios";
 
     public function guardar($objeto){
-        $sql = "call gestionarservicios(0,?,?,?,?,?,?,?,?)";
+        $sql = "call gestionarservicios(0,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("isisiiii", $objeto->idservicio, $objeto->nombreServicio, $objeto->costoServicio, $objeto->descripcionServicio, $objeto->presionSistolica, $objeto->presionDiastolica, $objeto->peso, $objeto->idCategoria);
+        $sentencia->bind_param("isisiiiiii", $objeto->idservicio, $objeto->nombreServicio, $objeto->costoServicio, $objeto->descripcionServicio, $objeto->presionSistolica, $objeto->presionDiastolica, $objeto->peso, $objeto->precio, $objeto->porcentajeDeGanancia, $objeto->idCategoria);
         $sentencia->execute();
     }
     public function eliminar($objeto){
-        $sql = "call gestionarservicios(1,?,?,?,?,?,?,?,?)";
+        $sql = "call gestionarservicios(1,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("isisiiii", $objeto->idservicio, $objeto->nombreServicio, $objeto->costoServicio, $objeto->descripcionServicio, $objeto->presionSistolica, $objeto->presionDiastolica, $objeto->peso, $objeto->idCategoria);
+        $sentencia->bind_param("isisiiiiii", $objeto->idservicio, $objeto->nombreServicio, $objeto->costoServicio, $objeto->descripcionServicio, $objeto->presionSistolica, $objeto->presionDiastolica, $objeto->peso, $objeto->precio, $objeto->porcentajeDeGanancia, $objeto->idCategoria);
         $sentencia->execute();
     }
     public function listar(){}
