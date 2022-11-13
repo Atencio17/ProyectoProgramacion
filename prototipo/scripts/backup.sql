@@ -35,6 +35,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'abc'),(55,'a'),(123,'dentist'),(777,'kinesico'),(10003,'spa'),(100003,'daniel');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,6 +285,8 @@ CREATE TABLE `servicios` (
   `presionsistolica` int(11) DEFAULT NULL,
   `presiondiastolica` int(11) DEFAULT NULL,
   `peso` int(11) DEFAULT NULL,
+  `precio` int(11) DEFAULT NULL,
+  `porcentajeGanancia` int(11) DEFAULT NULL,
   `idCategoria` int(11) NOT NULL,
   PRIMARY KEY (`idServicio`),
   UNIQUE KEY `nombreServicio_UNIQUE` (`nombreServicio`),
@@ -300,6 +303,22 @@ LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger ventadetalle_bu before update on servicios for each row 
+update ventadetalle set precio = old.precio where idservicio = old.idservicio */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `servicioselementos`
@@ -365,10 +384,7 @@ DROP TABLE IF EXISTS `ventadetalle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ventadetalle` (
-  `subtotal` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
   `precio` int(11) NOT NULL,
-  `costo` float NOT NULL,
   `idventaEncabezado` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL,
   PRIMARY KEY (`idventaEncabezado`,`idServicio`),
@@ -421,45 +437,6 @@ UNLOCK TABLES;
 --
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `gestionar estudios` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionar estudios`(poperacion int,pidestudio int, pestudio longtext, pidempleado int, 
-										ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
-BEGIN
-Declare vnumeroregistros int;
-   
-   if (poperacion = 0) then
-		   
-		  Select count(1) into vnumeroregistros
-		  from estudios
-		  where idestudios = pidestudio;
-		  
-		  if (vnumeroregistros = 0) then
-			 Insert Into 
-			  estudios
-			  values(pidestudio, pestudio, pidempleado,ptipoIdentificacion);
-		  else   
-			 update estudios set estudio = pestudio, idempleado = pidempleado, tipoIdentificacion = ptipoIdentificacion
-			 where idestudio = pidestudio;
-		 end if;  
-    else
-        Delete from estudios 
-        where idestudio = pidestudio;
-	end if;   
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarcategorias` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -506,28 +483,31 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarcitas`(poperacion int, pidcitas int, pcita datetime, pidcliente int, pidempleado int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarcitas`(poperacion int, pidcitas int, pcita datetime, pidcliente int, 
+ptipoidentificacioncliente ENUM('Cedula', 'tarjeta de identidad', 'cedula de extranjeria'), pidempleado int,
+ptipoidentificacionempleado ENUM('Cedula', 'tarjeta de identidad', 'cedula de extranjeria'))
 BEGIN
 Declare vnumeroregistros int;
-   
+
    if (poperacion = 0) then
-		   
-		  Select count(1) into vnumeroregistros
-		  from citas
-		  where idcitas = pidcitas;
-		  
-		  if (vnumeroregistros = 0) then
-			 Insert Into 
-			  citas
-			  values(pidcitas, pcita, pidcliente, pidempleado);
-		  else   
-			 update citas set cita = pcita, idcliente = pidcliente, idempleado = pidempleado
-			 where idcitas = pidcitas;
-		 end if;  
+
+          Select count(1) into vnumeroregistros
+          from citas
+          where idcitas = pidcitas;
+
+          if (vnumeroregistros = 0) then
+             Insert Into 
+              citas
+              values(pidcitas, pcita, pidcliente,ptipoidentificacioncliente, pidempleado, ptipoidentificacionempleado);
+          else
+             update citas set cita = pcita, idcliente = pidcliente, clientes_tipoIdentificacion = ptipoidentificacioncliente, 
+             idempleado = pidempleado, empleados_tipoIdentificacion = ptipoidentificacionempleado
+             where idcitas = pidcitas;
+         end if;
     else
         Delete from citas 
         where idcitas = pidcitas;
-	end if;   
+    end if;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -832,7 +812,8 @@ DELIMITER ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarservicios`(poperacion int, pidServicio int,pnombreServicio varchar(45),pcostoServicio int(11) 
-,pdescripcionServicio longtext,ppresionsistolica int(11),ppresiondiastolica int,ppeso int,pidCategoria int(11))
+,pdescripcionServicio longtext,ppresionsistolica int(11),ppresiondiastolica int,ppeso int,pprecio int
+,porcentajeGanancia int,pidCategoria int(11))
 BEGIN
 Declare vnumeroregistros int;
    
@@ -846,11 +827,12 @@ Declare vnumeroregistros int;
 			 Insert Into 
 			  servicios
 			  values(pidServicio,pnombreServicio,pcostoServicio,pdescripcionServicio,ppresionsistolica,ppresiondiastolica,ppeso
-					,pidCategoria);
+					,pprecio,pporcentajeGanancia,pidCategoria);
 		  else   
 			 update servicios set nombreservicio = pnombreServicio,costoservicio = pcostoServicio
 								,descripcionServicio = pdescripcionServicio,presionsistolica = ppresionsistolica
-                                ,presiondiastolica = ppresiondiastolica,peso = ppeso,idcategoria = pidCategoria
+                                ,presiondiastolica = ppresiondiastolica,peso = ppeso,precio = pprecio
+                                ,porcentajeGanancia = pporcentajeGanancia,idcategoria = pidCategoria
 			 where idServicio = pidServicio;
 		 end if;  
     else
@@ -901,6 +883,83 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `gestionarventadetalle` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarventadetalle`(poperacion int,pprecio int, pidventaEncabezado int, pidservicio int)
+BEGIN
+Declare vnumeroregistros int;
+   
+   if (poperacion = 0) then
+		   
+		  Select count(1) into vnumeroregistros
+		  from ventadetalle
+		  where idventaEncabezado = pidventaEncabezado and idservicio = pidservicio;
+		  
+		  if (vnumeroregistros = 0) then
+			 Insert Into 
+			  ventadetalle
+			  values(pprecio, pidventaEncabezado, pidservicio);
+		  else   
+			 update ventadetalle set precio = pprecio, idventaEncabezado = pidventaEncabezado, idservicio = pidservicio
+			 where idventaEncabezado = pidventaEncabezado and idservicio = pidservicio;
+		 end if;  
+    else
+        Delete from ventadetalle 
+        where idventaEncabezado = pidventaEncabezado and idservicio = pidservicio;
+	end if;   
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `gestionarventaencabezado` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarventaencabezado`(poperacion int, pidventaEncabezado int, pfecha date, ptotal int, pidcliente int,
+ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
+BEGIN
+Declare vnumeroregistros int;
+   
+   if (poperacion = 0) then
+		   
+		  Select count(1) into vnumeroregistros
+		  from ventaencabezado
+		  where idventaEncabezado = pidventaEncabezado;
+		  
+		  if (vnumeroregistros = 0) then
+			 Insert Into 
+			  ventaencabezado
+			  values(pidventaEncabezado, pfecha, ptotal, pidcliente,ptipoIdentificacion);
+		  else   
+			 update ventaencabezado set fecha = pfecha,total = ptotal,idcliente= pidcliente,ptipoIdentificacion = ptipoIdentificacion
+			 where idventaEncabezado = pidventaEncabezado;
+		 end if;  
+    else
+        Delete from ventaencabezado 
+        where idventaEncabezado = pidventaEncabezado;
+	end if;   
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -911,4 +970,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-07 12:07:15
+-- Dump completed on 2022-11-13 14:34:08
