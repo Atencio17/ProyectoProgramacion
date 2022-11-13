@@ -1,123 +1,128 @@
-            * {
-                box-sizing: border-box;
-                /* border: solid; */
-            }
-            
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                min-height: 100vh;
-            }
-            
-            header {
-                padding: 30px;
-                background-color: #07BEB8;
-                text-align: center;
-            }
-            
-            nav {
-                display: flex;
-                flex-direction: row;
-                background-color: #3DCCC7;
-                justify-content: space-between;
-            }
-            
-            nav a {
-                color: black;
-                padding: 14px 20px;
-                text-decoration: none;
-            }
-            
-            nav div a {
-                padding: 14px 20px;
-            }
-            
-            .row {
-                display: flex;
-                min-height: 65vh;
-            }
-            
-            aside {
-                flex: 40px;
-                background-color: #68D8D6;
-                padding: 20px;
-            }
-            
-            aside a {
-                text-decoration: none;
-                color: black;
-            }
-            
-            section {
-                position: relative;
-                flex: 60%;
-                padding: 20px;
-                background-color: #9CEAEF;
-            }
-            
-            footer {
-                padding: 20px;
-                text-align: center;
-                background-color: #C4FFF9;
-                text-align: center;
-                margin-top: auto;
-            }
-            
-            @media screen and (max-width: 700px) {
-                nav,
-                .row {
-                    flex-direction: column;
-                }
-            }
-            
-            .sectionDiv {
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .botones {
-                margin-top: 10px;
-                background-color: #9CEAEF;
-                outline: none;
-                border: none;
-                border-radius: 10px;
-            }
-            
-            .divaside {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-            
-            .botonsection {
-                margin-top: 10px;
-                background-color: #68D8D6;
-                outline: none;
-                border: none;
-                border-radius: 10px;
-            }
-            
-            .estilogo {
-                width: 100px;
-                height: 100px;
-            }
-<<<<<<< HEAD
-            
-            .botonagendarcita {
-                margin-top: 10px;
-                background-color: #68D8D6;
-                outline: none;
-                border: none;
-                border-radius: 10px;
-=======
-
-            .bordesDiv th{
-                border: 2px solid black;
-            }
-
-            .bordesDiv td{
-                border: 2px solid black;
->>>>>>> 3a7b56f4a56da895067a3d84d1c9a31036dc308e
-            }
+    * {
+        box-sizing: border-box;
+        /* border: solid; */
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    header {
+        padding: 30px;
+        background-color: #07BEB8;
+        text-align: center;
+    }
+    
+    nav {
+        display: flex;
+        flex-direction: row;
+        background-color: #3DCCC7;
+        justify-content: space-between;
+    }
+    
+    nav a {
+        color: black;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    
+    nav div a {
+        padding: 14px 20px;
+    }
+    
+    .row {
+        display: flex;
+        min-height: 65vh;
+    }
+    
+    aside {
+        flex: 40px;
+        background-color: #68D8D6;
+        padding: 20px;
+    }
+    
+    aside a {
+        text-decoration: none;
+        color: black;
+    }
+    
+    section {
+        position: relative;
+        flex: 60%;
+        padding: 20px;
+        background-color: #9CEAEF;
+    }
+    
+    footer {
+        padding: 20px;
+        text-align: center;
+        background-color: #C4FFF9;
+        text-align: center;
+        margin-top: auto;
+    }
+    
+    @media screen and (max-width: 700px) {
+        nav,
+        .row {
+            flex-direction: column;
+        }
+    }
+    
+    .sectionDiv {
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .botones {
+        margin-top: 10px;
+        background-color: #9CEAEF;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+    }
+    
+    .divaside {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .botonsection {
+        margin-top: 10px;
+        background-color: #68D8D6;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+    }
+    
+    .estilogo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .botonagendarcita {
+        margin-top: 10px;
+        background-color: #68D8D6;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+    }
+    
+    .bordesDiv th {
+        border: 2px solid black;
+    }
+    
+    .bordesDiv td {
+        border: 2px solid black
+    }
+    
+    .divFormularios {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    

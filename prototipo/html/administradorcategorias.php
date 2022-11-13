@@ -42,13 +42,13 @@
                             <input type="text" id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
                         </div>
                         <input type="text" value="categoria" hidden name="controlador">
-                        <input type="submit" class="btn btn-info botonTamaño " value="guardar" style="margin-top: 20px;" name="operacion"></input>
+                        <input type="submit" class="btn btn-info botonTamaño" value="guardar" style="margin-top: 20px;" name="operacion"></input>
                     </form>
                     <div>
 
                     <h4>Listado Categorias</h4>
 
-                        <table>
+                        <table style="border: 1px solid black;">
                             <tr>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
@@ -64,20 +64,26 @@
                                     echo "<td>".$fila['idCategoria']."</td>";
                                     echo "<td>".$fila['Categoria']."</td>";
                                     echo "<td> <br>
+                                    <div class='divFormularios'>
+                                    <div>
                                     <form action='../controladores/controladorformulario.php' method='post'>
                                     <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
                                     <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
                                     <input type='text' name='controlador' value='categoria' hidden>
-                                    <input type='submit' name='operacion' value='eliminar'>
+                                    <input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'>
                                     </form> 
-
-                                    <form action='../vistas/administradorcategorias.php' method='post'>
+                                    </div>
+                                    <div>
+                                    <form action='../html/administradorcategorias.php' method='post'>
                                     <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
                                     <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
-                                    <input type='submit' value='editar'>
+                                    <input type='submit' value='editar' class='btn btn-info botonTamaño' style='margin-right:5px'>
                                     </form>
+                                    </div>
+                                    </div>
                                     </td>";
                                     echo "</tr>";
+                                    
                                     
                                 }
 
