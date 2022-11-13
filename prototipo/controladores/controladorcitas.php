@@ -5,7 +5,7 @@
 
 class ControladorCitas extends ConectarMySQL implements InterfazControladores{
 
-    private $tabla = "elementos";
+    private $tabla = "citas";
 
     public function guardar($objeto){
         $sql = "call gestionarcitas(0,?,?,?,?,?,?)";

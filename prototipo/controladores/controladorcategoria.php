@@ -5,7 +5,7 @@
 
 class ControladorCategorias extends ConectarMySQL implements InterfazControladores{
 
-    private $tabla = "experiencias";
+    private $tabla = "categorias";
 
     public function guardar($objeto){
         $sql = "call gestionarcategorias(0,?,?)";
@@ -21,6 +21,18 @@ class ControladorCategorias extends ConectarMySQL implements InterfazControlador
     }
     public function listar(){}
     public function consultarRegistro($objeto){}
+    
+    public function listarDatos(){
+        $sql = "select * from ".$this->tabla;
+        return $this->getDatos($sql);
+    }
+
+    public function getDatos($sql){
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
 
 }
 

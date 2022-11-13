@@ -5,7 +5,7 @@
 
 class ControladorUsuarios extends ConectarMySQL implements InterfazControladores{
 
-    private $tabla = "elementos";
+    private $tabla = "usuarios";
 
     public function guardar($objeto){
         $sql = "call gestionarelementos(0,?,?,?,?,?)";
