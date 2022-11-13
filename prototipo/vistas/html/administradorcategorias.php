@@ -58,7 +58,7 @@
 
         <?php
 
-            include ('../../controladores/controladorcategoria.php');
+            include ('../controladores/controladorcategoria.php');
             $controladorCliente = new ControladorCliente();
             $resultado = $controladorCliente->listarDatos();
             while ($fila = $resultado->fetch_assoc()) {

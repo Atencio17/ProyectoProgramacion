@@ -25,74 +25,70 @@
 
     <div class="row">
 
-
         <section>
-           <div class="col">
-            <h4 style="text-align: center; ">CATEGORIAS</h4>
-            <div style="text-align: center; display: flex; justify-content:center ;">
-                <form action="../controladores/controladorformulario.php" method="post">
-                    <div>
-                        <label for="exampleInputEmail1 " class="form-label " style="margin-top: 15px;">Identificador de la categoria</label><br>
-                        <input type="number" id="usuario " aria-describedby="emailHelp " name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>">
+            <div class="col">
+            
+                <div style="text-align: center; display: flex; justify-content:space-around ;">
+                
+                    <form action="../controladores/controladorformulario.php" method="post">
+                    <h4 style="text-align: center; ">CATEGORIAS</h4>
+                        <div>
+                            <label for="exampleInputEmail1 " class="form-label " style="margin-top: 15px;">Identificador de la categoria</label><br>
+                            <input type="number" id="usuario " aria-describedby="emailHelp " name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>">
 
-                    </div>
+                        </div>
+                        <div>
+                            <label for="exampleInput Password1 " class="form-label ">Nombre de la categoria</label><br>
+                            <input type="text" id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
+                        </div>
+                        <input type="text" value="categoria" hidden name="controlador">
+                        <input type="submit" class="btn btn-info botonTamaño " value="guardar" style="margin-top: 20px;" name="operacion"></input>
+                    </form>
                     <div>
-                        <label for="exampleInput Password1 " class="form-label ">Nombre de la categoria</label><br>
-                        <input type="text" id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
+
+                    <h4>Listado Categorias</h4>
+
+                        <table>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                            </tr>
+
+                            <?php
+
+                                include '../controladores/controladorcategoria.php';
+                                $controladorCliente = new ControladorCategorias();
+                                $resultado = $controladorCliente->listarDatos();
+                                while ($fila = $resultado->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>".$fila['idCategoria']."</td>";
+                                    echo "<td>".$fila['Categoria']."</td>";
+                                    echo "<td> <br>
+                                    <form action='../controladores/controladorformulario.php' method='post'>
+                                    <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
+                                    <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
+                                    <input type='text' name='controlador' value='categoria' hidden>
+                                    <input type='submit' name='operacion' value='eliminar'>
+                                    </form> 
+
+                                    <form action='../vistas/administradorcategorias.php' method='post'>
+                                    <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
+                                    <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
+                                    <input type='submit' value='editar'>
+                                    </form>
+                                    </td>";
+                                    echo "</tr>";
+                                    
+                                }
+
+                            ?>
+
+                        </table>
                     </div>
-                    <input type="text" value="categoria" hidden name="controlador">
-                    <input type="submit" class="btn btn-info botonTamaño " value="guardar" style="margin-top: 20px;" name="operacion"></input>
+                </div>
             </div>
 
-
-
-            </form>
-           </div>
-
-    <div>
-
-    <h1>Listado Categorias</h1>
-
-    <table>
-
-        <tr>
-
-            <th>Codigo</th>
-            <th>Nombre</th>
-
-        </tr>
-
-        <?php
-
-            include '../controladores/controladorcategoria.php';
-            $controladorCliente = new ControladorCategorias();
-            $resultado = $controladorCliente->listarDatos();
-            while ($fila = $resultado->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>".$fila['idCategoria']."</td>";
-                echo "<td>".$fila['Categoria']."</td>";
-                echo "<td> <br>
-                <form action='../controladores/controladorformulario.php' method='post'>
-                <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
-                <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
-                <input type='text' name='controlador' value='categoria' hidden>
-                <input type='submit' name='operacion' value='eliminar'>
-                </form> 
-
-                <form action='../vistas/administradorcategorias.php' method='post'>
-                <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
-                <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
-                <input type='submit' value='editar'>
-                </form>
-                </td>";
-                echo "</tr>";
-                
-            }
-
-        ?>
-
-    </table>
-    </div>
+    
 
     </section>
 </div>

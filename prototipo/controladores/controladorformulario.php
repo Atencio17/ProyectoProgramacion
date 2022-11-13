@@ -18,7 +18,7 @@ if ($controlador == "categoria") {
         $controladorGenerico->guardar($objeto);
         echo "<script>
                 alert('insertó de forma exitosa');
-                window.location.href = '../vistas/administradorcategorias.php';
+                window.location.href = '../html/administradorcategorias.php';
               </script>";
 
     }elseif ($operacion == "eliminar") {
@@ -26,7 +26,7 @@ if ($controlador == "categoria") {
         $controladorGenerico->eliminar($objeto);
         echo "<script>
                 alert('Eliminó de forma exitosa');
-                window.location.href = '../vistas/administradorcategorias.php';
+                window.location.href = '../html/administradorcategorias.php';
               </script>";
 
     }
