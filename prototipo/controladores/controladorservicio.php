@@ -7,6 +7,13 @@ class ControladorServicios extends ConectarMySQL implements InterfazControladore
 
     private $tabla = "servicios";
 
+    public function evolucion($uno,$dos,$tres,$cuatro){
+        $sql = "update ".$this->tabla." set presionsistolica = ?, presiondiastolica = ?, peso = ? where idServicio = ?";
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->bind_param("iiii",$uno,$dos,$tres,$cuatro);
+        $sentencia->execute();
+    }
+
     public function guardar($objeto){
         $sql = "call gestionarservicios(0,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
@@ -21,6 +28,18 @@ class ControladorServicios extends ConectarMySQL implements InterfazControladore
     }
     public function listar(){}
     public function consultarRegistro($objeto){}
+
+    public function listarDatos(){
+        $sql = "select * from ".$this->tabla;
+        return $this->getDatos($sql);
+    }
+
+    public function getDatos($sql){
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
 
 }
 

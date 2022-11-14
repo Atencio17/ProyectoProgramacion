@@ -20,6 +20,20 @@ class ControladorElementos extends ConectarMySQL implements InterfazControladore
         $sentencia->execute();
     }
     public function listar(){}
+
+    public function listarDatos(){
+        $sql = "select * from ".$this->tabla;
+        return $this->getDatos($sql);
+    }
+
+    public function getDatos($sql){
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
+
+
     public function consultarRegistro($objeto){}
 
 }
