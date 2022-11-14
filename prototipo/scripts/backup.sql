@@ -126,6 +126,7 @@ CREATE TABLE `elementos` (
 
 LOCK TABLES `elementos` WRITE;
 /*!40000 ALTER TABLE `elementos` DISABLE KEYS */;
+INSERT INTO `elementos` VALUES (10003,'aceite',200,'aceite para masajes'),(100003,'locion',400,'locion sin mas');
 /*!40000 ALTER TABLE `elementos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,7 +281,7 @@ DROP TABLE IF EXISTS `servicios`;
 CREATE TABLE `servicios` (
   `idServicio` int(11) NOT NULL,
   `nombreServicio` varchar(45) NOT NULL,
-  `costoServicio` int(11) NOT NULL,
+  `costoServicio` int(11) DEFAULT NULL,
   `descripcionServicio` longtext NOT NULL,
   `presionsistolica` int(11) DEFAULT NULL,
   `presiondiastolica` int(11) DEFAULT NULL,
@@ -301,6 +302,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
+INSERT INTO `servicios` VALUES (1,'A',NULL,'Este es el servicio A',120,80,75,NULL,NULL,777),(2,'B',NULL,'Este es el servicio B',NULL,NULL,NULL,NULL,NULL,777);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -813,7 +815,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarservicios`(poperacion int, pidServicio int,pnombreServicio varchar(45),pcostoServicio int(11) 
 ,pdescripcionServicio longtext,ppresionsistolica int(11),ppresiondiastolica int,ppeso int,pprecio int
-,porcentajeGanancia int,pidCategoria int(11))
+,pporcentajeGanancia int,pidCategoria int(11))
 BEGIN
 Declare vnumeroregistros int;
    
@@ -885,6 +887,51 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `gestionarusuarios` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarusuarios`(poperacion int, pcontraseña varbinary(16), pidCliente int(11), 
+ptipoIdentificacionCliente enum('Cedula','tarjeta de identidad','cedula de extranjeria'), pidEmpleado int(11) 
+,ptipoIdentificacionEmpleado enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
+BEGIN
+Declare vnumeroregistros int;
+   
+   if (poperacion = 0) then
+		   
+		  Select count(1) into vnumeroregistros
+		  from usuarios
+		  where (idcliente = pidCliente and tipoIdentificacionCliente = ptipoIdentificacionCliente) and
+          (idempleado = pidEmpleado and tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado);
+		  
+		  if (vnumeroregistros = 0) then
+			 Insert Into 
+			  usuarios
+			  values(pcontraseña,pidCliente,ptipoIdentificacionCliente,pidEmpleado,ptipoIdentificacionEmpleado);
+		  else   
+			 update usuarios set contraseña = pcontraseña, idcliente = pidCliente,
+             tipoIdentificacionCliente = ptipoIdentificacionCliente,idEmpleado = pidEmpleado,
+             tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado 
+			 where (idcliente = pidCliente and tipoIdentificacionCliente = ptipoIdentificacionCliente) and
+          (idempleado = pidEmpleado and tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado);
+		 end if;  
+    else
+        Delete from usuarios 
+		  where (idcliente = pidCliente and tipoIdentificacionCliente = ptipoIdentificacionCliente) and
+          (idempleado = pidEmpleado and tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado);
+	end if;   
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarventadetalle` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -947,7 +994,7 @@ Declare vnumeroregistros int;
 			  ventaencabezado
 			  values(pidventaEncabezado, pfecha, ptotal, pidcliente,ptipoIdentificacion);
 		  else   
-			 update ventaencabezado set fecha = pfecha,total = ptotal,idcliente= pidcliente,ptipoIdentificacion = ptipoIdentificacion
+			 update ventaencabezado set fecha = pfecha,total = ptotal,idcliente= pidcliente,tipoIdentificacion = ptipoIdentificacion
 			 where idventaEncabezado = pidventaEncabezado;
 		 end if;  
     else
@@ -970,4 +1017,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-13 14:34:08
+-- Dump completed on 2022-11-14 15:08:12
