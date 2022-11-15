@@ -24,103 +24,90 @@
     </nav>
 
     <div class="row">
-
         <section>
             <div class="col">
-            <h4 style="text-align: center; ">MATERIAS PRIMAS Y REACTIVOS</h4>
-            <div style="text-align: center; display: flex; justify-content:space-around ;">
+                <div style="text-align: center; display: flex; justify-content:space-evenly;">
 
-                <form action="../controladores/controladorformulario.php" method="post" id="usrform">
+                    <form action="../controladores/controladorformulario.php" method="post" id="usrform">
+                    <h4 style="text-align: center; ">MATERIAS PRIMAS Y REACTIVOS</h4>
+                        <div>
+                            <label for="exampleInputEmail1 " class="form-label " style="margin-top: 15px;">Identificador del reactivo o materia prima</label><br>
+                            <input type="text " id="usuario " aria-describedby="emailHelp " name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>">
+                        </div>
+                        <div>
+                            <label for="exampleInput Password1 " class="form-label ">nombre</label><br>
+                            <input type="text " id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
+                        </div>
+                        <div>
+                            <label for="exampleInput Password1 " class="form-label ">Costo</label><br>
+                            <input type="number " name="costo" value="<?php echo isset($_POST['costo']) ? $_POST['costo'] : '';?>">
+                        </div>
+
+                        <div>
+                            
+                            <label for="exampleInput Password1 " class="form-label ">Descripción</label><br>
+                            <textarea id=" " cols="30 " rows="2" name="descripcion" value="<?php echo isset($_POST['descripcion']) ? $_POST['descripcion'] : '';?>" form="usrform"></textarea>
+                            
+                        </div>
+
+                        <input type="submit" class="btn btn-info botonTamaño " value="guardar" style="margin-top: 10px;" name="operacion"></input>
+                        <input type='text' name='controlador' value='elemento' hidden>
+                    </form>
 
                     <div>
-                        <label for="exampleInputEmail1 " class="form-label " style="margin-top: 15px;">Identificador del reactivo o materia prima</label><br>
-                        <input type="text " id="usuario " aria-describedby="emailHelp " name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>">
 
+                        <h4>LISTADO MATERIAS PRIMAS Y REACTIVOS</h4>
+                        <div style="overflow-x:auto; max-width: 600px;">
+                            <table style="border: 1px solid black;">
+                                <tr>
+                                    <th style='border: 1px solid #000; vertical-align: center; text-align: center; padding:5px;'>Código</th>
+                                    <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Nombre</th>
+                                    <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Costo</th>
+                                    <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Descripción</th>
+                                    <th colspan=3 style='border: 1px solid #000; vertical-align: center; text-align: center;'>Acción</th>
+                                </tr>
+
+                            <?php
+                                include '../controladores/controladorelemento.php';
+                                $controladorCliente = new ControladorElementos();
+                                $resultado = $controladorCliente->listarDatos();
+                                while ($fila = $resultado->fetch_assoc()) {
+                                    echo "<tr border: 1px solid #000;>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['idElemento']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['nombre']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['costo']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['descripcion']."</td>";
+                                    echo "<td border: 1px solid #000;> <br>
+
+                                    <div>
+                                        <form action='../controladores/controladorformulario.php' method='post'>
+                                        <input type='number' name='codigo' value=". $fila['idElemento'] ." hidden>
+                                        <input type='text' name='nombre' value=". $fila['nombre'] ." hidden>
+                                        <input type='text' name='costo' value=". $fila['costo'] ." hidden>
+                                        <input type='text' name='descripcion' value=". $fila['descripcion'] ." hidden>
+                                        <input type='text' name='controlador' value='elemento' hidden>
+                                        <td border: 1px solid #000;><input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
+                                        </form> 
+                                    </div>
+                                    <div>
+                                        <form action='../html/administradormateriasprimas.php' method='post'>
+                                        <input type='number' name='codigo' value=". $fila['idElemento'] ." hidden>
+                                        <input type='text' name='nombre' value=". $fila['nombre'] ." hidden>
+                                        <input type='text' name='costo' value=". $fila['costo'] ." hidden>
+                                        <input type='text' name='descripcion' value=". $fila['descripcion'] ." hidden>
+                                        <td border: 1px solid #000;><input type='submit' value='editar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
+                                        </form>
+                                    </div>
+                                    </td>";
+                                    echo "</tr>";
+                                }
+                            ?>
+
+                            </table>
+                        </div>
                     </div>
-                    <div>
-                        <label for="exampleInput Password1 " class="form-label ">nombre</label><br>
-                        <input type="text " id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
-                    </div>
-                    <div>
-                        <label for="exampleInput Password1 " class="form-label ">Costo</label><br>
-                        <input type="number " name="costo" value="<?php echo isset($_POST['costo']) ? $_POST['costo'] : '';?>">
-                    </div>
-
-                    <div>
-                        
-                        <label for="exampleInput Password1 " class="form-label ">Descripción</label><br>
-                        <textarea id=" " cols="30 " rows="5" name="descripcion" value="<?php echo isset($_POST['descripcion']) ? $_POST['descripcion'] : '';?>" form="usrform"></textarea>
-                        
-                    </div>
-
-                    <input type="submit" class="btn btn-info botonTamaño " value="guardar" style="margin-top: 10px;" name="operacion"></input>
-                    <input type='text' name='controlador' value='elemento' hidden>
-
-
-                </form>
-                
-            </div>
-            <div>
-            <div>
-
-<h4>Listado Categorias</h4>
-
-    <table style="border: 1px solid black;">
-        <tr>
-            <th>Codigo</th>
-            <th>Nombre</th>
-            <th>Costo</th>
-            <th>Descripción</th>
-        </tr>
-
-        <?php
-
-            include '../controladores/controladorelemento.php';
-            $controladorCliente = new ControladorElementos();
-            $resultado = $controladorCliente->listarDatos();
-            while ($fila = $resultado->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>".$fila['idElemento']."</td>";
-                echo "<td>".$fila['nombre']."</td>";
-                echo "<td>".$fila['costo']."</td>";
-                echo "<td>".$fila['descripcion']."</td>";
-                echo "<td> <br>
-                <div class='divFormularios'>
-                <div>
-                <form action='../controladores/controladorformulario.php' method='post'>
-                <input type='number' name='codigo' value=". $fila['idElemento'] ." hidden>
-                <input type='text' name='nombre' value=". $fila['nombre'] ." hidden>
-                <input type='text' name='costo' value=". $fila['costo'] ." hidden>
-                <input type='text' name='descripcion' value=". $fila['descripcion'] ." hidden>
-                <input type='text' name='controlador' value='elemento' hidden>
-                <input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'>
-                </form> 
                 </div>
-                <div>
-                <form action='../html/administradormateriasprimas.php' method='post'>
-                <input type='number' name='codigo' value=". $fila['idElemento'] ." hidden>
-                <input type='text' name='nombre' value=". $fila['nombre'] ." hidden>
-                <input type='text' name='costo' value=". $fila['costo'] ." hidden>
-                <input type='text' name='descripcion' value=". $fila['descripcion'] ." hidden>
-                <input type='submit' value='editar' class='btn btn-info botonTamaño' style='margin-right:5px'>
-                </form>
-                </div>
-                </div>
-                </td>";
-                echo "</tr>";
-                
-                
-            }
-
-        ?>
-
-    </table>
-</div>
-</div>
-</div>
             </div>
-            </div>
-
         </section>
     </div>
 

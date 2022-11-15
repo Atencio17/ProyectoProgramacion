@@ -28,7 +28,7 @@
         <section>
             <div class="col">
             
-                <div style="text-align: center; display: flex; justify-content:space-around ;">
+                <div style="text-align: center; display: flex; justify-content:space-evenly;">
                 
                     <form action="../controladores/controladorformulario.php" method="post">
                     <h4 style="text-align: center; ">CATEGORIAS</h4>
@@ -46,47 +46,44 @@
                     </form>
                     <div>
 
-                    <h4>Listado Categorias</h4>
+                    <h4>LISTADO CATEGORIAS</h4>
 
-                        <table style="border: 1px solid black;">
+                        <table style="border: 1px solid #000;">
                             <tr>
-                                <th>Codigo</th>
-                                <th>Nombre</th>
+                                <th style='border: 1px solid #000; vertical-align: center; text-align: center; padding:5px;'>Código</th>
+                                <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Nombre</th>
+                                <th colspan=3 style='border: 1px solid #000; vertical-align: center; text-align: center;'>Acción</th>
                             </tr>
 
                             <?php
-
                                 include '../controladores/controladorcategoria.php';
                                 $controladorCliente = new ControladorCategorias();
                                 $resultado = $controladorCliente->listarDatos();
                                 while ($fila = $resultado->fetch_assoc()) {
-                                    echo "<tr>";
-                                    echo "<td>".$fila['idCategoria']."</td>";
-                                    echo "<td>".$fila['Categoria']."</td>";
-                                    echo "<td> <br>
-                                    <div class='divFormularios'>
+                                    echo "<tr border: 1px solid #000;>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['idCategoria']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Categoria']."</td>";
+                                    echo "<td border: 1px solid #000;> <br>
+                                    
                                     <div>
                                     <form action='../controladores/controladorformulario.php' method='post'>
                                     <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
                                     <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
                                     <input type='text' name='controlador' value='categoria' hidden>
-                                    <input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'>
+                                    <td border: 1px solid #000;><input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
                                     </form> 
                                     </div>
                                     <div>
                                     <form action='../html/administradorcategorias.php' method='post'>
                                     <input type='number' name='codigo' value=". $fila['idCategoria'] ." hidden>
                                     <input type='text' name='nombre' value=". $fila['Categoria'] ." hidden>
-                                    <input type='submit' value='editar' class='btn btn-info botonTamaño' style='margin-right:5px'>
+                                    <td border: 1px solid #000;><input type='submit' value='editar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
                                     </form>
                                     </div>
-                                    </div>
+                                    
                                     </td>";
                                     echo "</tr>";
-                                    
-                                    
                                 }
-
                             ?>
 
                         </table>

@@ -42,6 +42,15 @@
 
                 <form action="">
                     <div>
+                    <label for="">Tipo de usuario</label> <br>
+                        <select name="usuarios" id="lang">
+                            <option value="1"></option>
+                            <option value="2">secretaria</option>
+                            <option value="3">profesional</option>
+                            <option value="4">Cliente</option>
+                            <option value="5">gerente</option>
+                        </select> <br> <br>
+
                         <label for="">Tipo de identificación</label> <br>
                         <select name="lenguajes" id="lang">
                             <option value="javascript"></option>
@@ -49,14 +58,14 @@
                             <option value="php">Tarjeta de identidad</option>
                             <option value="java">Cedula de extranjeria</option>
                             <option value="golang">Pasaporte</option>
-                          </select> <br> <br>
+                        </select> <br> <br>
                         <label for="">Numero identificación</label> <br>
                         <input type="number"> <br> <br>
                         <label for="">Nombres</label> <br>
                         <input type="text"> <br> <br>
                         <label for="">Apellidos</label> <br>
                         <input type="text"> <br><br>
-                        <label for="">Numero de telefono</label> <br>
+                        <label for="">Numero de teléfono</label> <br>
                         <input type="number"> <br> <br>
                     </div>
                 </form>
