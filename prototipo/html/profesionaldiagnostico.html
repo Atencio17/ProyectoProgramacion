@@ -31,54 +31,49 @@
 
         <section>
             <h4 style="text-align: center; ">DIAGNÓSTICO INICIAL</h4>
-            <form action="">
-                <table>
-                    <tr>
-                        <td style="text-align: end;">
-                            <label for="">Número de identificación</label>
-                            <input type="text" name="">
-                        </td>
-                        <td style="text-align: end;">
-                            <label for="">Peso</label>
-                            <input type="text" name="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: end;">
-                            <label for="">Presión arterial</label>
-                            <input type="text" name="">
-                        </td>
-                        <td style="text-align: end;">
-                            <label for="">Derivación</label>
-                            <input type="text" name="">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: end;">
-                            <div style="margin-right: 5px;">
-                                <label for="" style="margin-right: 50px;">Diagnóstico</label>
-                            </div>
-                            <textarea name="" id="" cols="23" rows="5" id="text5"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><br></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="">Número de sesiones recomendadas</label>
-                            <input type="text" name="">
-                        </td>
-                    </tr>
-                </table>
-                <button type="submit" class="botonsection">Guardar</button>
-            </form>
+            <div style="text-align: center;display: flex;justify-content:space-evenly; margin-top:20px;">
+                <div>
+                    <form action="">
+
+                        <label for="">Número de identificación</label><br>
+                        <input type="text" name=""><br><br>
+
+                        <label for="">Peso</label><br>
+                        <input type="text" name=""><br><br>
+
+                        <label for="">Presión arterial</label><br>
+                        <input type="text" name=""><br><br>
+
+                        <label for="">Derivación</label><br>
+                        <input type="text" name=""><br><br>
+
+                        <label for="">Diagnóstico</label><br>
+                        <textarea name="" id="" cols="23" rows="2" id="text5"></textarea><br><br>
+                
+                        <label for="">Número de sesiones recomendadas</label><br>
+                        <input type="text" name=""><br>
+
+                        <button type="submit" class="botonsection">Guardar</button>
+                        
+                    </form>
+                </div>
+                    
+                <div>
+                    <label for="">Servicios que se aplicaran</label><br>
+                    <select name="servicios" id="lang">
+                        <option value="javascript">Servicios</option>
+                        <option value="javascript">fisio</option>
+                        <option value="php">masage</option>
+                        <option value="java">quiropractico</option>
+                        <option value="golang">a</option>
+                    </select>
+                    <button type="submit" class="botonsection">Agregar</button>
+                </div>
+
+            </div>
+                
+                
+            
         </section>
     </div>
 

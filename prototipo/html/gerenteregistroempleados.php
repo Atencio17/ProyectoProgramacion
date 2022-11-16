@@ -29,7 +29,7 @@
                 <h4>Nombre usuario</h4>
                 <a href="gerentereportedeventas.html"><button type="button " class="botones ">Reporte de ventas</button></a><br>
                 <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
-                <a href="gerentedefinirservicio.html"><button type="button " class="botones ">Definir servicios</button></a><br>
+                <a href="gerentedefinirservicio.php"><button type="button " class="botones ">Definir servicios</button></a><br>
                 <a href="gerentereportedeganancias.html"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
                 <a href="gerenteserviciosatendidospormes.html"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
             </div>
@@ -38,26 +38,25 @@
         <section>
             <h4 style="text-align: center; ">REGISTRO DE EMPLEADOS</h4>
 
-            <div class="gridContainerGerente">
-
-                <form action="">
-                    <div>
+            <div style="text-align: center;display: flex;justify-content:space-evenly; margin-top:20px;">
+                <div>
+                    <form action="">
                     <label for="">Tipo de usuario</label> <br>
                         <select name="usuarios" id="lang">
-                            <option value="1"></option>
-                            <option value="2">secretaria</option>
-                            <option value="3">profesional</option>
-                            <option value="4">Cliente</option>
-                            <option value="5">gerente</option>
+                            <option value="1">Tipo de usuario</option>
+                            <option value="secretaria">secretaria</option>
+                            <option value="profesional">profesional</option>
+                            <option value="Cliente">Cliente</option>
+                            <option value="gerente">gerente</option>
                         </select> <br> <br>
 
                         <label for="">Tipo de identificación</label> <br>
-                        <select name="lenguajes" id="lang">
-                            <option value="javascript"></option>
-                            <option value="javascript">Cédula</option>
-                            <option value="php">Tarjeta de identidad</option>
-                            <option value="java">Cedula de extranjeria</option>
-                            <option value="golang">Pasaporte</option>
+                        <select name="tiposidentificacion" id="lang">
+                            <option value="javascript">Tipo de identificación</option>
+                            <option value="Cedula">Cédula</option>
+                            <option value="tarjetadeidentidad">Tarjeta de identidad</option>
+                            <option value="ceduladeextranjeria">Cedula de extranjeria</option>
+                            <option value="pasaporte">Pasaporte</option>
                         </select> <br> <br>
                         <label for="">Numero identificación</label> <br>
                         <input type="number"> <br> <br>
@@ -66,34 +65,32 @@
                         <label for="">Apellidos</label> <br>
                         <input type="text"> <br><br>
                         <label for="">Numero de teléfono</label> <br>
-                        <input type="number"> <br> <br>
-                    </div>
-                </form>
+                        <input type="number"> <br>
+                        <input type="button" class="btn btn-info botonTamaño " value="registrar empleado" style="margin-top: 20px;"></input>
+                    </form>
+                </div>
+                
 
                 <div>
-                    
                     <form action="">
-                    <table>
-                        <tr>
-                            <th>Estudios</th>
-                            <th>Experiencia</th>
-                        </tr>
-                        <tr>
-                            <td>xxxxxxxx</td>
-                            <td>xxxxxx</td>
-                        </tr>
-                    </table>
-                    <input type="button " class="btn btn-info botonTamaño " value="agregar estudios" style="margin-top: 20px;"></input>
-                    <input type="button " class="btn btn-info botonTamaño " value="agregar esperticie" style="margin-top: 20px;"></input>
+                        <table>
+                            <tr>
+                                <th style="text-align:center;">Estudios</th>
+                                <th style="padding-left:15px; text-align:center;">Experiencia</th>
+                            </tr>
+                            <tr>
+                                <td>xxxxxxxx</td>
+                                <td>xxxxxx</td>
+                            </tr>
+                        </table>
+                        <input type="button" class="btn btn-info botonTamaño " value="agregar estudios" style="margin-top: 20px;"></input>
+                        <input type="button" class="btn btn-info botonTamaño " value="agregar esperticie" style="margin-top: 20px;"></input>
                     </form>
-
                 </div>
             </div>
 
 
         </section>
-
-
 
         <footer>
             <div style="display: flex; justify-content: space-around;">

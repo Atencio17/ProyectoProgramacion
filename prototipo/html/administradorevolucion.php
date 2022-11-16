@@ -46,7 +46,7 @@
                 echo "<option value=".$fila['idServicio'].">".$fila['nombreServicio']."</option>";
             }
             echo "</select>";
-
+            
         ?>
         
             </div>
@@ -61,13 +61,13 @@
                     <h5>Reglas de evolución</h5>
 
                     <label for="">Presión sistolica</label><br>
-                    <input type="number" name="presionUno"><br><br>
+                    <input required type="number" name="presionUno"><br><br>
 
                     <label for="">Presión diastólica</label><br>
-                    <input type="number" name="presionDos"><br><br>
+                    <input required type="number" name="presionDos"><br><br>
 
                     <label>Peso</label><br>
-                    <input type="number" name="peso"> <br><br>
+                    <input required type="number" name="peso"> <br><br>
 
                 </div>
             </div>
