@@ -1,7 +1,7 @@
 <?php
 
-    require("../componentes/conectarmysql.php");
-    require("interfazcontroladores.php");
+require_once("../componentes/conectarmysql.php");
+require_once("interfazcontroladores.php");
 
 class ControladorHistoriasClinicas extends ConectarMySQL implements InterfazControladores{
 
