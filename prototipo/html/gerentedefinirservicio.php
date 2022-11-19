@@ -71,7 +71,7 @@
                         <option value="javascript">Agua mineral</option>
                         <option value="javascript">Masajeador</option>
                 </select>
-            <br>
+            <br> 
             <table>
                     <tr>
                         <th>idServicio</th>

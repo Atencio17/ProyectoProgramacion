@@ -211,6 +211,28 @@ LOCK TABLES `experiencias` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `festivos`
+--
+
+DROP TABLE IF EXISTS `festivos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `festivos` (
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `festivos`
+--
+
+LOCK TABLES `festivos` WRITE;
+/*!40000 ALTER TABLE `festivos` DISABLE KEYS */;
+INSERT INTO `festivos` VALUES ('2022-01-01'),('2022-01-10'),('2022-03-21'),('2022-04-14'),('2022-04-15'),('2022-05-01'),('2022-05-30'),('2022-06-20'),('2022-06-27'),('2022-07-04'),('2022-07-20'),('2022-08-07'),('2022-08-15'),('2022-10-17'),('2022-11-07'),('2022-11-14'),('2022-12-08'),('2022-12-25');
+/*!40000 ALTER TABLE `festivos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `historiasclinicas`
 --
 
@@ -287,7 +309,7 @@ CREATE TABLE `servicios` (
   `presiondiastolica` int(11) DEFAULT NULL,
   `peso` int(11) DEFAULT NULL,
   `precio` int(11) DEFAULT NULL,
-  `porcentajeGanancia` int(11) DEFAULT NULL,
+  `porcentajeGanancia` int(11) NOT NULL,
   `idCategoria` int(11) NOT NULL,
   PRIMARY KEY (`idServicio`),
   UNIQUE KEY `nombreServicio_UNIQUE` (`nombreServicio`),
@@ -302,7 +324,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (1,'A',NULL,'Este es el servicio A',120,80,75,NULL,NULL,777),(2,'B',NULL,'Este es el servicio B',NULL,NULL,NULL,NULL,NULL,777);
+INSERT INTO `servicios` VALUES (1,'A',NULL,'Este es el servicio A',120,80,75,NULL,0,777),(2,'B',NULL,'Este es el servicio B',NULL,NULL,NULL,NULL,0,777);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1017,4 +1039,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-14 15:08:12
+-- Dump completed on 2022-11-19 12:44:07

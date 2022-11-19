@@ -52,7 +52,7 @@ function loguear() {
     } else if (usuario == "cliente" && password == "123"){
         window.location.href = "oficinavirtual.html";
     } else if (usuario == "admin" && password =="123"){
-        window.location.href = "administradorpaginaprincipal.html";
+        window.location.href = "administradorpaginaprincipal.php";
     }else {
         alert("Usuario o password errado");
     }
