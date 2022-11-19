@@ -10,4 +10,4 @@ interface InterfazControladores{
     public function consultarRegistro($objeto);
 }
 
-?>
+?> 
