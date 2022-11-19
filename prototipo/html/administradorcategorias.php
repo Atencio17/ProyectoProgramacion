@@ -34,14 +34,14 @@
                     <h4 style="text-align: center; ">CATEGORIAS</h4>
                         <div>
                             <label for="exampleInputEmail1 " class="form-label " style="margin-top: 15px;">Identificador de la categoria</label><br>
-                            <input type="number" id="usuario " aria-describedby="emailHelp " name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>">
+                            <input required type="number" id="usuario " aria-describedby="emailHelp " name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>">
 
                         </div>
                         <div>
                             <label for="exampleInput Password1 " class="form-label ">Nombre de la categoria</label><br>
-                            <input type="text" id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
+                            <input required type="text" id="contrasena " name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>">
                         </div>
-                        <input type="text" value="categoria" hidden name="controlador">
+                        <input  type="text" value="categoria" hidden name="controlador">
                         <input type="submit" class="btn btn-info botonTamaño" value="guardar" style="margin-top: 20px;" name="operacion"></input>
                     </form>
                     <div>
