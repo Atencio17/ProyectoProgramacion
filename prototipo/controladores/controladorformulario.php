@@ -121,8 +121,8 @@ if ($controlador == "categoria") {
     require_once("../componentes/httpPHPAltiria.php");
     $altiriaSMS = new AltiriaSMS();
 
-    $altiriaSMS->setLogin('p927853@gmail.com');
-    $altiriaSMS->setPassword('sbttr4qb');
+    $altiriaSMS->setLogin('djgg8660@gmail.com');
+    $altiriaSMS->setPassword('nbss277b');
 
     $altiriaSMS->setDebug(true);
 
@@ -147,8 +147,8 @@ if ($controlador == "categoria") {
     $mail->Port       = 587;
     $mail->SMTPDebug  = 1;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'atenciomunive@hotmail.com';
-    $mail->Password   = 'andres123lol';
+    $mail->Username   = 'parcialprogramacion123@outlook.es';
+    $mail->Password   = 'parcialganado123';
     $mail->SetFrom('atenciomunive@hotmail.com', "no-reply");
     $mail->AddReplyTo('no-reply@mycomp.com','no-reply');
     $mail->Subject    = 'Codigo verificacion';
