@@ -24,22 +24,27 @@
         <div class="col">
             <div class="container-fluid colorHeaderAndFooter">
                 <div class="position-absolute top-50 start-50 translate-middle fondoDivLogueo divContainerLogin">
-                    <form>
+                    <form action="../controladores/controladorformulario.php" method="post">
                         <div class="mb-3 ">
                             <label for="exampleInputEmail1" class="form-label">Codigo de teléfono</label>
-                            <input type="number" class="form-control " id="usuario" aria-describedby="emailHelp ">
+                            <input type="number" class="form-control " name="codigoUno" aria-describedby="emailHelp">
 
                         </div>
                         <div class="mb-3 ">
-                            <label for="exampleInputPassword1 " class="form-label ">Codigo correo electronico</label>
-                            <input type="password " class="form-control " id="contrasena ">
+                            <label for="exampleInputPassword1" class="form-label">Codigo correo electronico</label>
+                            <input type="password" class="form-control " name="codigoDos">
                         </div>
 
 
-                        <a href="oficinavirtual.html "><input type="button " class="btn btn-info botonTamaño " value="Verificar"></input>
-                        </a>
+                        <input type="submit" class="btn btn-info botonTamaño" value="Verificar" name="controlador"></input>
+                        <input type="text" name="operacion" value="guardar" hidden>
 
-
+                        <?php
+                        echo "<input type='text' value=".$_POST['codigoCelular']." name='codigocelular' hidden>";
+                        echo "<input type='text' value=".$_POST['codigoCorreo']." name='codigocorreo' hidden>";
+                        echo "<input type='text' value=".$_POST['identificacion']." name='identificacion' hidden>";
+                        echo "<input type='text' value=".$_POST['tipoIdentificacion']." name='tipo' hidden>";
+                        ?>
                     </form>
                 </div>
             </div>
