@@ -42,11 +42,12 @@
                 <div class="divFormularios">
                     <div>
                         <form action="">
+                            <label for="">Ingrese el id del servicio</label><br>
+                            <input type="text" name="idservicio"><br><br>
+
                             <label for="">Ingrese el nombre del servicio</label><br>
                             <input type="text" name="nombreServicio"><br><br>
 
-                            <label for="">Precio</label><br>
-                            <input type="number"><br><br>
 
                             <label for="">Ganancia en porcentaje</label><br>
                             <input type="number"><br><br>
