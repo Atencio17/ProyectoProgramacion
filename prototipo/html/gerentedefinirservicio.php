@@ -29,89 +29,25 @@
                 <h4>Nombre usuario</h4>
                 <a href="gerentereportedeventas.html"><button type="button " class="botones ">Reporte de ventas</button></a><br>
                 <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
-<<<<<<< HEAD
-                <a href="gerenteregistroempleados.html"><button type="button " class="botones ">Registrar empleados</button></a><br>
-=======
                 <a href="gerenteregistroempleados.php"><button type="button " class="botones ">Registrar empleados</button></a><br>
->>>>>>> 35f09c60513a758634f5b5962b935f3eda17c056
                 <a href="gerentereportedeganancias.html"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
                 <a href="gerenteserviciosatendidospormes.html"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
             </div>
         </aside>
 
         <section>
-<<<<<<< HEAD
-            <h4 style="text-align: center; ">Definir servicios</h4>
-
-
-            <table>
-                <tr>
-                    <th>servicios</th>
-                    <th>Precio</th>
-                    <th>Ganancia en porcentaje</th>
-                </tr>
-                <tr>
-                    <td>
-                        <select name="lenguajes" id="lang">
-                                <option value="javascript">Kinesico</option>
-                                <option value="javascript">Fisioterapia</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="number">
-                    </td>
-                    <td>
-                        <input type="text">
-                    </td>
-                </tr>
-
-            </table>
-
-            <label for=""><strong>Descripción</strong></label> <br>
-            <input type="area"> <br> <br>
-            <label for=""><strong> Materias primas</strong></label> <br>
-            
-                <select name="lenguajes" id="lang">
-                        <option value="javascript">Aceite</option>
-                        <option value="javascript">Agua mineral</option>
-                        <option value="javascript">Masajeador</option>
-                </select>
-            <br> 
-            <table>
-                    <tr>
-                        <th>idServicio</th>
-                        <th>Elemento</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Agua mineral</td>
-                    </tr>
-            </table>
-            <br>
-            <button type="button" class="botonsection">Definir</button>
-
-            <button type="button" class="botonsection">Borrar</button>
-
-    </div>
-
-
-
-    </section>
-
-
-
-=======
             <h4 style="text-align: center;">Definir servicios</h4>
             
             <div style="text-align: center; display: flex; justify-content:space-evenly; margin-top:15px;">
                 <div class="divFormularios">
                     <div>
                         <form action="">
+                            <label for="">Ingrese el id del servicio</label><br>
+                            <input type="text" name="idservicio"><br><br>
+
                             <label for="">Ingrese el nombre del servicio</label><br>
                             <input type="text" name="nombreServicio"><br><br>
 
-                            <label for="">Precio</label><br>
-                            <input type="number"><br><br>
 
                             <label for="">Ganancia en porcentaje</label><br>
                             <input type="number"><br><br>
@@ -179,27 +115,18 @@
         </section>
     </div>
 
->>>>>>> 35f09c60513a758634f5b5962b935f3eda17c056
     <footer>
         <div style="display: flex; justify-content: space-around;">
             <div>
                 <h1>CECAR</h1>
-<<<<<<< HEAD
-                <a href=" " style="text-decoration: none;"><img src="../recursos/images/cecarlogo.png " alt="facebook"></a>
-=======
                 <a href=" " style="text-decoration: none;"><img src="../recursos/images/cecarlogo.png   " alt="facebook" class="estilogo"></a>
->>>>>>> 35f09c60513a758634f5b5962b935f3eda17c056
             </div>
             <div>
                 <ul>
                     <h6>Contactanos</h6>
                     <div>
                         facebook
-<<<<<<< HEAD
-                        <a href=" " style="text-decoration: none;"><img src="../recursos/images/facebook.png " alt="facebook"></a><br>Instagram
-=======
                         <a href=" " style="text-decoration: none;"><img src="../recursos/images/facebook.png" alt="facebook"></a><br>Instagram
->>>>>>> 35f09c60513a758634f5b5962b935f3eda17c056
                         <a href=" "><img src="../recursos/images/instagram.png " alt="facebook "></a><br> numero telefono
                         <a href=" "><img src="../recursos/images/telefono.png " alt=" "></a><br> direccioncorreo@example.com
                         <a href=" "><img src="../recursos/images/gmail.png " alt=" "></a><br>
