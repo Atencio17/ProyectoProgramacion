@@ -9,6 +9,58 @@
     <link rel="stylesheet" href="../css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../recursos/images/cecarlogo.png">
+    <script src="../js/funcionalidad.js" ></script>
+
+    <script lang="JavaScript">
+        function agregar() {
+
+            var tbodyEstudios = document.getElementById("tbodyEstudios");
+            var estudios = document.getElementById("estudios").value;
+            var input = inputTag("input");
+
+            input.setAttribute("value", estudios);
+            input.setAttribute("disabled", true);
+
+            var eliminar = document.createElement("input");
+            eliminar.type = "button";
+            eliminar.value = "Eliminar";
+            eliminar.className = "btn btn-danger";
+            eliminar.onclick = function() {
+            tr.remove();
+            };
+
+            let tr = document.createElement("tr");
+            tr.append(input, eliminar)
+
+            tbodyEstudios.append(tr);
+
+        }
+
+        function agregarDos() {
+
+            var tbodyExperiencia = document.getElementById("tbodyExperiencia");
+            var experiencias = document.getElementById("experiencias").value;
+            var input = inputTagDos("input");
+
+            input.setAttribute("value", experiencias);
+            input.setAttribute("disabled", true);
+
+            var eliminar = document.createElement("input");
+            eliminar.type = "button";
+            eliminar.value = "Eliminar";
+            eliminar.className = "btn btn-danger";
+            eliminar.onclick = function() {
+            tr.remove();
+            };
+
+            let tr = document.createElement("tr");
+            tr.append(input, eliminar)
+
+            tbodyExperiencia.append(tr);
+
+        }
+    </script>
+
 </head>
 
 <body>
@@ -40,53 +92,73 @@
 
             <div style="text-align: center;display: flex;justify-content:space-evenly; margin-top:20px;">
                 <div>
-                    <form action="">
+                    <form action="../controladores/controladorformulario.php" method="post">
                     <label for="">Tipo de usuario</label> <br>
                         <select name="usuarios" id="lang">
-                            <option value="1">Tipo de usuario</option>
-                            <option value="secretaria">secretaria</option>
-                            <option value="profesional">profesional</option>
-                            <option value="Cliente">Cliente</option>
-                            <option value="gerente">gerente</option>
+                            <option value="S">secretaria</option>
+                            <option value="P">profesional</option>
+                            <option value="A">administrador</option>
+                            <option value="G">gerente</option>
                         </select> <br> <br>
 
                         <label for="">Tipo de identificación</label> <br>
                         <select name="tiposidentificacion" id="lang">
-                            <option value="javascript">Tipo de identificación</option>
                             <option value="Cedula">Cédula</option>
-                            <option value="tarjetadeidentidad">Tarjeta de identidad</option>
-                            <option value="ceduladeextranjeria">Cedula de extranjeria</option>
-                            <option value="pasaporte">Pasaporte</option>
+                            <option value="tarjeta de identidad">Tarjeta de identidad</option>
+                            <option value="cedula de extranjeria">Cedula de extranjeria</option>
                         </select> <br> <br>
+
                         <label for="">Numero identificación</label> <br>
-                        <input type="number"> <br> <br>
+                        <input type="number" name="identificacion"> <br> <br>
                         <label for="">Nombres</label> <br>
-                        <input type="text"> <br> <br>
+                        <input type="text" name="nombre"> <br> <br>
                         <label for="">Apellidos</label> <br>
-                        <input type="text"> <br><br>
+                        <input type="text" name="apellido"> <br><br>
                         <label for="">Numero de teléfono</label> <br>
-                        <input type="number"> <br>
-                        <input type="button" class="btn btn-info botonTamaño " value="registrar empleado" style="margin-top: 20px;"></input>
+                        <input type="number" name="celular"> <br><br>
+                        <label for="">Contraseña</label><br>
+                        <input type="text" name="password"> <br><br>
+                        <label for="">Confirmar Contraseña</label><br>
+                        <input type="text" name="passwordconfirm"><br><br>
+
+                        <div>
+                        <table id="tabla">
+
+                            <thead>
+                                <th style="text-align:center;">Estudios</th>
+                            </thead>
+
+                            <tbody id="tbodyEstudios">
+
+                            </tbody>
+
+                        </table>
+
+                        <input type="text" placeholder="Estudios" name="estudios" id="estudios">
+                        <input type="button" class="btn btn-info botonTamaño" value="agregar estudios" onclick="agregar()">
+
+                        <table id="tablaDos">
+
+                            <thead>
+                                <th style="text-align:center;">Experiencias</th>
+                            </thead>
+
+                            <tbody id="tbodyExperiencia">
+
+                            </tbody>
+
+                        </table>
+                        <input type="text" placeholder="Experiencia" name="experiencias" id="experiencias">
+                        <input type="button" class="btn btn-info botonTamaño " value="agregar Experiencia" style="margin-top: 20px;" onclick="agregarDos()"></input>
+                        </div>
+
+                        <input type="text" name="controlador" value="empleado", hidden>
+                        <input type="submit" class="btn btn-info botonTamaño" value="registrar" style="margin-top: 20px;" name="operacion"></input>
+
+                        
                     </form>
                 </div>
                 
-
-                <div>
-                    <form action="">
-                        <table>
-                            <tr>
-                                <th style="text-align:center;">Estudios</th>
-                                <th style="padding-left:15px; text-align:center;">Experiencia</th>
-                            </tr>
-                            <tr>
-                                <td>xxxxxxxx</td>
-                                <td>xxxxxx</td>
-                            </tr>
-                        </table>
-                        <input type="button" class="btn btn-info botonTamaño " value="agregar estudios" style="margin-top: 20px;"></input>
-                        <input type="button" class="btn btn-info botonTamaño " value="agregar esperticie" style="margin-top: 20px;"></input>
-                    </form>
-                </div>
             </div>
 
 

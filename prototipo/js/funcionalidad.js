@@ -1,9 +1,9 @@
-$(function() {
-    $(document).on('click', '.borrar', function(event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
-});
+//$(function() {
+//    $(document).on('click', '.borrar', function(event) {
+//        event.preventDefault();
+//        $(this).closest('tr').remove();
+//    });
+//});
 
 function crearTagConTexto(tagHTML, texto) {
     var tagHTML = crearTag(tagHTML);
@@ -21,6 +21,39 @@ function crearTagImage(path) {
 
 function agregarElemento(elemento) {
     document.body.appendChild(elemento);
+}
+
+function crearTagConInput(tag,tagTR){
+
+    var tagHTML = crearTag(tag);
+    var boton = document.createElement("input");
+    boton.type = "button";
+    boton.value = "Eliminar";
+    boton.className = "btn btn-danger";
+    boton.onclick = function() {
+        tagTR.remove();
+         };
+    tagHTML.appendChild(boton);
+
+    return tagHTML;
+}
+
+function inputTag(tag){
+
+    var tagHTML = crearTag(tag);
+    tagHTML.type = "text";
+    tagHTML.name = "estudios[]";
+
+    return tagHTML;
+}
+
+function inputTagDos(tag){
+
+    var tagHTML = crearTag(tag);
+    tagHTML.type = "text";
+    tagHTML.name = "experiencia[]";
+
+    return tagHTML;
 }
 
 function crearTagA(texto, url) {

@@ -113,7 +113,7 @@ if ($controlador == "categoria") {
     if ($operacion == "guardar") {
       $controladorGenerico->guardar($objeto); 
       $controladorGenerico = new ControladorUsuarios();
-      $objeto = new Usuario($acceso, $identificacion, $tipoIdentificacion, null, null);
+      $objeto = new Usuario($acceso, $identificacion, $tipoIdentificacion, null, null,"C");
       $controladorGenerico->guardar($objeto);
     }
 
@@ -204,5 +204,24 @@ if ($controlador == "categoria") {
     echo "<script>
     window.location.href = '../html/secretariapaginaprincipal.html';
   </script>";
+  }
+}elseif ($controlador == "empleado") {
+
+  $tipoUsuario = $_POST['usuarios'];
+  $tipoIdentificacion = $_POST['tiposidentificacion'];
+  $identificacion = $_POST['identificacion'];
+  $nombre = $_POST['nombre'];
+  $apellido = $_POST['apellido'];
+  $celular = $_POST['celular'];
+  $password = $_POST['password'];
+  $passwordconfirm = $_POST['passwordconfirm'];
+  $estudios = $_POST['estudios'];
+  $experiencia = $_POST['experiencia'];
+
+  if ($operacion == "registrar") {
+    
+    if ($password == $passwordconfirm) {
+      
+    }
   }
 }
