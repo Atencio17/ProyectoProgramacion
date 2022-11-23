@@ -18,8 +18,8 @@
     </header>
 
     <nav>
-        <a href="secretariapaginaprincipal.html"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">Cerrar sesión</a>
+        <a href="secretariapaginaprincipal.php"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">Cerrar sesión</a>
     </nav>
 
 

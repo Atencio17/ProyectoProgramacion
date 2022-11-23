@@ -19,6 +19,7 @@
             var input = inputTag("input");
 
             input.setAttribute("value", estudios);
+            input.readOnly  = true;
 
             var eliminar = document.createElement("input");
             eliminar.type = "button";
@@ -42,6 +43,7 @@
             var input = inputTagDos("input");
 
             input.setAttribute("value", experiencias);
+            input.readOnly  = true;
 
             var eliminar = document.createElement("input");
             eliminar.type = "button";
@@ -69,8 +71,8 @@
     </header>
 
     <nav>
-        <a href="gerentepaginaprincipal.html"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">Cerrar sesión</a>
+        <a href="gerentepaginaprincipal.php"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">Cerrar sesión</a>
     </nav>
 
     <div class="row">

@@ -19,8 +19,8 @@
     </header>
 
     <nav>
-        <a href="paginaPrincipal.html"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">Iniciar sesión</a>
+        <a href="paginaPrincipal.php"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">Iniciar sesión</a>
     </nav>
 
     <div class="row">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secretaria página principal</title>
+    <title>Oficina virtual</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../recursos/images/cecarlogo.png">
@@ -19,21 +19,23 @@
     </header>
 
     <nav>
-        <a href="secretariapaginaprincipal.html"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">Cerrar sesión</a>
+        <a href="oficinavirtual.php"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">Cerrar sesión</a>
     </nav>
 
     <div class="row">
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="secretariaregistro.php"><button type="button " class="botones ">Registro cliente</button></a><br>
-                <a href="secretariafacturacion.html"><button type="button " class="botones ">Facturación</button></a>
+                <a href="agendarcitas.html"><button type="button " class="botones ">Agendar citas médicas</button></a><br>
+                <a href="consultarcita.html"><button type="button " class="botones ">Consultar y cancelar cita</button></a><br>
+                <a href="evoluciondetratamiento.html"><button type="button " class="botones ">Evolución del tratamiento</button></a><br>
+                <a href="informacionpersonal.html"><button type="button " class="botones ">Información personal</button></a>
             </div>
         </aside>
 
         <section>
-            <h4 style="text-align: center; ">PAGINA PRINCIPAL SECRETARIA</h4>
+            <h4 style="text-align: center; ">BIENVENIDO A LA OFICINA VIRTUAL</h4>
             <table>
                 <tr>
                     <th style="text-align:center ; "></th>
@@ -42,10 +44,13 @@
                 <tr>
                     <td></td>
                     <td style="width: 70%; ">
-                        <p>
-                            Acá podrá registrar a los cliente, verificar la dirección, su número de teléfon e ingresar su historia clínica.
-                        </p>
+                        <p>Bienvenido, se le brinda una corial bienvenida a nuesta oficina virtua, una herramienta de fácil acceso con la que podrá realizar con toda seguridad y tranquilidad desde su casa o lugar de trabajo, los siguientes trámites:</p>
 
+                        <ul>
+                            <li>Actualización de datos personales</li>
+                            <li>Solicitar, validar y/o cancelar citas médicas</li>
+                            <li>Solicitar citas directas de fisoterapia y kinesia</li>
+                        </ul>
                     </td>
                     <td>
                         <div style="display: flex; align-items: center; flex-direction: column; ">
