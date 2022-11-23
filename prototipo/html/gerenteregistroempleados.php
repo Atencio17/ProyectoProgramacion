@@ -19,7 +19,6 @@
             var input = inputTag("input");
 
             input.setAttribute("value", estudios);
-            input.setAttribute("disabled", true);
 
             var eliminar = document.createElement("input");
             eliminar.type = "button";
@@ -43,7 +42,6 @@
             var input = inputTagDos("input");
 
             input.setAttribute("value", experiencias);
-            input.setAttribute("disabled", true);
 
             var eliminar = document.createElement("input");
             eliminar.type = "button";

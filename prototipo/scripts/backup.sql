@@ -152,6 +152,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
+INSERT INTO `empleados` VALUES (0,'Cedula','Daniel','Gonzales'),(123,'Cedula','a','v'),(777,'Cedula','Nicolas','Murillo'),(99999,'Cedula','yeni','villanueva'),(998674,'Cedula','ANDRES','ATENCIO'),(12313124,'Cedula','ANDRES','ATENCIO'),(123124455,'Cedula','Nicolas','Murillo');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,14 +164,14 @@ DROP TABLE IF EXISTS `estudios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estudios` (
-  `idEstudio` int(11) NOT NULL,
+  `idEstudio` int(11) NOT NULL AUTO_INCREMENT,
   `estudio` longtext NOT NULL,
   `idEmpleado` int(11) NOT NULL,
   `tipoIdentificacion` enum('Cedula','tarjeta de identidad','cedula de extranjeria') NOT NULL,
   PRIMARY KEY (`idEstudio`),
   KEY `fk_estudios_empleados1_idx` (`idEmpleado`,`tipoIdentificacion`),
   CONSTRAINT `fk_estudios_empleados1` FOREIGN KEY (`idEmpleado`, `tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +180,7 @@ CREATE TABLE `estudios` (
 
 LOCK TABLES `estudios` WRITE;
 /*!40000 ALTER TABLE `estudios` DISABLE KEYS */;
+INSERT INTO `estudios` VALUES (1,'si',123,'Cedula'),(2,'no',123,'Cedula'),(3,'universitario',123124455,'Cedula'),(4,'bachiller',123124455,'Cedula'),(5,'primaria',123124455,'Cedula'),(6,'primaria',123124455,'Cedula');
 /*!40000 ALTER TABLE `estudios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,14 +192,14 @@ DROP TABLE IF EXISTS `experiencias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `experiencias` (
-  `idExperiencia` varchar(45) NOT NULL,
+  `idExperiencia` int(11) NOT NULL AUTO_INCREMENT,
   `experiencia` longtext NOT NULL,
   `idEmpleado` int(11) NOT NULL,
   `tipoIdentificacion` enum('Cedula','tarjeta de identidad','cedula de extranjeria') NOT NULL,
   PRIMARY KEY (`idExperiencia`),
   KEY `fk_experiencia_empleados1_idx` (`idEmpleado`,`tipoIdentificacion`),
   CONSTRAINT `fk_experiencia_empleados1` FOREIGN KEY (`idEmpleado`, `tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,6 +208,7 @@ CREATE TABLE `experiencias` (
 
 LOCK TABLES `experiencias` WRITE;
 /*!40000 ALTER TABLE `experiencias` DISABLE KEYS */;
+INSERT INTO `experiencias` VALUES (1,'no',123,'Cedula'),(2,'si',123,'Cedula'),(3,'google',123124455,'Cedula'),(4,'google',123124455,'Cedula'),(5,'google',123124455,'Cedula'),(6,'amazon',123124455,'Cedula'),(7,'yutu',123124455,'Cedula'),(8,'amazon',123124455,'Cedula'),(9,'amazon',123124455,'Cedula');
 /*!40000 ALTER TABLE `experiencias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,6 +400,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES ('hola',NULL,NULL,99999,'Cedula','S'),('hola',NULL,NULL,99999,'Cedula','S'),('hola',NULL,NULL,99999,'Cedula','S'),('Andres',NULL,NULL,12313124,'Cedula','P'),('Andres',NULL,NULL,12313124,'Cedula','P'),('Andres',NULL,NULL,12313124,'Cedula','P'),('Andres',NULL,NULL,12313124,'Cedula','P'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('a',NULL,NULL,777,'Cedula','A'),('b',NULL,NULL,0,'Cedula','G'),('b',NULL,NULL,0,'Cedula','G'),('b',NULL,NULL,0,'Cedula','G'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('Andres',NULL,NULL,12313124,'Cedula','S'),('a',NULL,NULL,998674,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -625,7 +629,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarempleados` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -636,7 +640,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarempleados`(poperacion int,pidempleado int(11),
 ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'),pnombre varchar(45)
-,papellido varchar(45),ptipousuario varchar(60))
+,papellido varchar(45))
 BEGIN
 Declare vnumeroregistros int;
    
@@ -649,9 +653,9 @@ Declare vnumeroregistros int;
 		  if (vnumeroregistros = 0) then
 			 Insert Into 
 			  empleados
-			  values(pidempleado,ptipoIdentificacion,pnombre,papellido,ptipousuario);
+			  values(pidempleado,ptipoIdentificacion,pnombre,papellido);
 		  else   
-			 update empleados set nombre = pnombre, apellido = papellido, tipousuario = ptipousuario
+			 update empleados set nombre = pnombre, apellido = papellido
 			 where idempleado = pidempleado and tipoIdentificacion = ptipoIdentificacion;
 		 end if;  
     else
@@ -908,7 +912,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarusuarios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -919,7 +923,7 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarusuarios`(poperacion int, pcontraseña varbinary(16), pidCliente int(11), 
 ptipoIdentificacionCliente enum('Cedula','tarjeta de identidad','cedula de extranjeria'), pidEmpleado int(11) 
-,ptipoIdentificacionEmpleado enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
+,ptipoIdentificacionEmpleado enum('Cedula','tarjeta de identidad','cedula de extranjeria'), ptipo enum('C','P','S','A','G'))
 BEGIN
 Declare vnumeroregistros int;
    
@@ -933,11 +937,11 @@ Declare vnumeroregistros int;
 		  if (vnumeroregistros = 0) then
 			 Insert Into 
 			  usuarios
-			  values(pcontraseña,pidCliente,ptipoIdentificacionCliente,pidEmpleado,ptipoIdentificacionEmpleado);
+			  values(pcontraseña,pidCliente,ptipoIdentificacionCliente,pidEmpleado,ptipoIdentificacionEmpleado,ptipo);
 		  else   
 			 update usuarios set contraseña = pcontraseña, idcliente = pidCliente,
              tipoIdentificacionCliente = ptipoIdentificacionCliente,idEmpleado = pidEmpleado,
-             tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado 
+             tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado, tipo = ptipo 
 			 where (idcliente = pidCliente and tipoIdentificacionCliente = ptipoIdentificacionCliente) and
           (idempleado = pidEmpleado and tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado);
 		 end if;  
@@ -1039,4 +1043,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-20  0:52:11
+-- Dump completed on 2022-11-22 21:20:45

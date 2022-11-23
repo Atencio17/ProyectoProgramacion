@@ -215,13 +215,48 @@ if ($controlador == "categoria") {
   $celular = $_POST['celular'];
   $password = $_POST['password'];
   $passwordconfirm = $_POST['passwordconfirm'];
+
   $estudios = $_POST['estudios'];
   $experiencia = $_POST['experiencia'];
 
   if ($operacion == "registrar") {
     
     if ($password == $passwordconfirm) {
-      
+      require_once("../modelos/empleadomodelo.php");
+      require_once("controladorempleado.php");
+      $controladorGenerico = new ControladorEmpleados();
+      $objeto = new Empleados($identificacion, $tipoIdentificacion, $nombre, $apellido);
+      $controladorGenerico->guardar($objeto);
+
+      require_once("../modelos/usuariomodelo.php");
+      require_once("controladorusuario.php");
+      $objeto = new Usuario($password,null,null,$identificacion,$tipoIdentificacion,$tipoUsuario);
+      $controladorGenerico = new ControladorUsuarios();
+      $controladorGenerico->guardar($objeto);
+
+      require_once("../modelos/experienciamodelo.php");
+      require_once("controladorexperiencia.php");
+      $controladorGenerico = new ControladorExperiencias();
+      for ($i=0; $i < count($experiencia); $i++) { 
+        $objeto = new Experiencia($experiencia[$i], $identificacion, $tipoIdentificacion);
+        $controladorGenerico->guardar($objeto);
+      }
+
+      require_once("../modelos/estudiomodelo.php");
+      require_once("controladorestudio.php");
+      $controladorGenerico = new ControladorEstudios();
+      for ($i=0; $i < count($estudios); $i++) { 
+        $objeto = new Estudios($estudios[$i], $identificacion, $tipoIdentificacion);
+        $controladorGenerico->guardar($objeto);
+      }
+
+    }else {
+      echo "<script> alert('La contraseña no es la misma') </script>";
     }
+
+    if ($password != $passwordconfirm) {
+      header('location:../html/gerenteregistroempleados.php');
+    }
+
   }
 }

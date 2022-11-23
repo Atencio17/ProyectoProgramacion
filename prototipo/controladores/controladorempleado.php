@@ -8,15 +8,15 @@ class ControladorEmpleados extends ConectarMySQL implements InterfazControladore
     private $tabla = "empleados";
 
     public function guardar($objeto){
-        $sql = "call gestionarempleados(0,?,?,?,?,?)";
+        $sql = "call gestionarempleados(0,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("issss", $objeto->idEmpleado, $objeto->tipoIdentificacion, $objeto->nombre, $objeto->apellido, $objeto->tipoUsuario);
+        $sentencia->bind_param("isss", $objeto->idEmpleado, $objeto->tipoIdentificacion, $objeto->nombre, $objeto->apellido);
         $sentencia->execute();
     }
     public function eliminar($objeto){
-        $sql = "call gestionarempleados(1,?,?,?,?,?)";
+        $sql = "call gestionarempleados(1,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("issss", $objeto->idEmpleado, $objeto->tipoIdentificacion, $objeto->nombre, $objeto->apellido, $objeto->tipoUsuario);
+        $sentencia->bind_param("isss", $objeto->idEmpleado, $objeto->tipoIdentificacion, $objeto->nombre, $objeto->apellido);
         $sentencia->execute();
     }
     public function listar(){}
