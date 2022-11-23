@@ -257,7 +257,7 @@ if ($controlador == "categoria") {
     if ($password != $passwordconfirm) {
       header('location:../html/gerenteregistroempleados.php');
     }else{
-      header('location:../html/gerentepaginaprincipal.html');
+      header('location:../html/gerentepaginaprincipal.php');
     }
 
   }

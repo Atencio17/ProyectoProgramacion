@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerente página principal</title>
+    <title>Secretaria página principal</title>
     <link rel="stylesheet" href="../css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../recursos/images/cecarlogo.png">
@@ -19,25 +19,21 @@
     </header>
 
     <nav>
-        <a href="gerentepaginaprincipal.html"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">Cerrar sesión</a>
+        <a href="secretariapaginaprincipal.php"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">Cerrar sesión</a>
     </nav>
 
     <div class="row">
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="gerentereportedeventas.html"><button type="button " class="botones ">Reporte de ventas</button></a><br>
-                <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
-                <a href="gerenteregistroempleados.php"><button type="button " class="botones ">Registrar empleados</button></a><br>
-                <a href="gerentedefinirservicio.php"><button type="button " class="botones ">Definir servicios</button></a><br>
-                <a href="gerentereportedeganancias.html"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
-                <a href="gerenteserviciosatendidospormes.html"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
+                <a href="secretariaregistro.php"><button type="button " class="botones ">Registro cliente</button></a><br>
+                <a href="secretariafacturacion.html"><button type="button " class="botones ">Facturación</button></a>
             </div>
         </aside>
 
         <section>
-            <h4 style="text-align: center; ">PAGINA PRINCIPAL GERENTE</h4>
+            <h4 style="text-align: center; ">PAGINA PRINCIPAL SECRETARIA</h4>
             <table>
                 <tr>
                     <th style="text-align:center ; "></th>
@@ -46,7 +42,9 @@
                 <tr>
                     <td></td>
                     <td style="width: 70%; ">
-                        <p>Aquí porá acceder a los reportes de ventas, a los importes de ganancias por servicio, puede registrar empleados, definir servicios, ver los reportes de ganancias y ver los servicios atendidos por mes.</p>
+                        <p>
+                            Acá podrá registrar a los cliente, verificar la dirección, su número de teléfon e ingresar su historia clínica.
+                        </p>
 
                     </td>
                     <td>
@@ -66,7 +64,7 @@
         <div style="display: flex; justify-content: space-around;">
             <div>
                 <h1>CECAR</h1>
-                <a href=" " style="text-decoration: none;"><img src="../recursos/images/cecarlogo.png " alt="facebook" class="estilogo"></a>
+                <a href=" " style="text-decoration: none; "><img src="../recursos/images/cecarlogo.png " alt="facebook" class="estilogo"></a>
             </div>
             <div>
                 <ul>

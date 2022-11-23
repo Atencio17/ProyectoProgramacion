@@ -19,8 +19,8 @@
     </header>
 
     <nav>
-        <a href="administradorpaginaprincipal.html"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">cerrar sesión</a>
+        <a href="administradorpaginaprincipal.php"><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">cerrar sesión</a>
     </nav>
 
     <div class="row">
