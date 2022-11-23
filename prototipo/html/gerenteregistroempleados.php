@@ -157,7 +157,7 @@
 
                                 </table>
                             </div>
- 
+                            
                             <div>
         
                                 <input type="text" placeholder="Experiencia" name="experiencias" id="experiencias"><br>
