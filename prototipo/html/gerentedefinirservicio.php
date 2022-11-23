@@ -41,30 +41,39 @@
             <div style="text-align: center; display: flex; justify-content:space-evenly; margin-top:15px;">
                 <div class="divFormularios">
                     <div>
-                        <form action="">
-                            <label for="">Ingrese el id del servicio</label><br>
-                            <input type="text" name="idservicio"><br><br>
+                        <form action="../controladores/controladorformulario.php" method="post" id="usrform">
+                            <label for="">Ingrese el codigo del servicio</label><br>
+                            <input type="text" name="codigo" value="<?php echo isset($_POST['codigo']) ? $_POST['codigo'] : '';?>"><br><br>
 
                             <label for="">Ingrese el nombre del servicio</label><br>
-                            <input type="text" name="nombreServicio"><br><br>
+                            <input type="text" name="nombreServicio" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>"><br><br>
 
 
                             <label for="">Ganancia en porcentaje</label><br>
-                            <input type="number"><br><br>
+                            <input type="number" name="ganancia" value="<?php echo isset($_POST['ganancia']) ? $_POST['ganancia'] : '';?>"><br><br>
                         
 
-                            <label for="">Descripción</label> <br>
+                            <label for="" >Descripción</label> <br>
                             
-                            <textarea name="" id="" cols="25" rows="2"></textarea> <br><br>
+                            <textarea id="" cols="25" rows="2" name="descripcion" form="usrform"></textarea> <br><br>
 
                             <label for="">Seleccione la categoría</label> <br>
-                            <select name="categorias" id="lang">
-                                <option value="javascript">categoria1</option>
-                                <option value="javascript">categoria2</option>
-                            </select> <br><br>
+                            <?php 
+                                include_once '../controladores/controladorcategoria.php';
+                                $controladorCategoria = new ControladorCategorias();
+                                $resultado = $controladorCategoria->listarDatos();
+                                echo "<select name='categorias' id='lang'>";
+                                while ($fila = $resultado->fetch_assoc()) {
+                                    echo "<option value=".$fila['idCategoria'].">".$fila['Categoria']."</option>";
+                                }
+                                echo "</select>";
+                            ?>
+                            
+                             <br><br>
 
-                            <a href="gerentedefinirelementosservicios.php"><button type="button" class="botonsection">Continuar</button></a>
-                            <button type="button" class="botonsection">Eliminar</button>
+                            <input type="text" hidden name="controlador" value="servicio">
+                            
+                            <input type="submit" name="operacion" class="botonsection" value="Guardar">
                         </form>
                     </div>
                 </div>
@@ -78,7 +87,7 @@
                         </tr>
 
                         <?php
-                            include '../controladores/controladorservicio.php';
+                            include_once '../controladores/controladorservicio.php';
                             $controladorServicio = new ControladorServicios();
                             $resultado = $controladorServicio->listarDatos();
                             while ($fila = $resultado->fetch_assoc()) {
@@ -91,14 +100,17 @@
                                 <form action='../controladores/controladorformulario.php' method='post'>
                                 <input type='number' name='codigo' value=". $fila['idServicio'] ." hidden>
                                 <input type='text' name='nombre' value=". $fila['nombreServicio'] ." hidden>
+                                <input type='text' name='ganancia' value=". $fila['porcentajeGanancia'] ." hidden>
                                 <input type='text' name='controlador' value='servicio' hidden>
                                 <td border: 1px solid #000;><input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
                                 </form> 
                                 </div>
+
                                 <div>
                                 <form action='gerentedefinirservicio.php' method='post'>
                                 <input type='number' name='codigo' value=". $fila['idServicio'] ." hidden>
                                 <input type='text' name='nombre' value=". $fila['nombreServicio'] ." hidden>
+                                <input type='text' name='ganancia' value=". $fila['porcentajeGanancia'] ." hidden>
                                 <td border: 1px solid #000;><input type='submit' value='editar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
                                 </form>
                                 </div>

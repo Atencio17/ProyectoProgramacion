@@ -256,7 +256,33 @@ if ($controlador == "categoria") {
 
     if ($password != $passwordconfirm) {
       header('location:../html/gerenteregistroempleados.php');
+    }else{
+      header('location:../html/gerentepaginaprincipal.html');
     }
 
+  }
+}elseif ($controlador == "servicio") {
+  
+  $codigo = $_POST['codigo'];
+
+  if ($operacion == "eliminar") {
+    require_once "../modelos/serviciomodelo.php";
+    require_once "controladorservicio.php";
+    $controladorGenerico = new ControladorServicios();
+    $objeto = new Servicio($codigo,null,null,null,null,null,null,null,null,null);
+    $controladorGenerico->eliminar($objeto);
+    header("location:../html/gerentedefinirservicio.php");
+  }elseif ($operacion == "Guardar") {
+    $nombre = $_POST['nombreServicio'];
+    $ganancia = $_POST['ganancia'];
+    $descripcion = $_POST['descripcion'];
+    $categoria = $_POST['categorias'];
+    require_once "../modelos/serviciomodelo.php";
+    require_once "controladorservicio.php";
+    $controladorGenerico = new ControladorServicios();
+    $objeto = new Servicio($codigo,$nombre,null,$descripcion,null,null,null,null,$ganancia,$categoria);
+    $controladorGenerico->guardar($objeto);
+
+    header("location:../html/gerentedefinirelementosservicios.php");
   }
 }
