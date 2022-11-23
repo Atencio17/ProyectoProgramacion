@@ -152,7 +152,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (0,'Cedula','Daniel','Gonzales'),(123,'Cedula','a','v'),(777,'Cedula','Nicolas','Murillo'),(99999,'Cedula','yeni','villanueva'),(998674,'Cedula','ANDRES','ATENCIO'),(12313124,'Cedula','ANDRES','ATENCIO'),(123124455,'Cedula','Nicolas','Murillo');
+INSERT INTO `empleados` VALUES (2147483647,'Cedula','a','v');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `estudios` (
   PRIMARY KEY (`idEstudio`),
   KEY `fk_estudios_empleados1_idx` (`idEmpleado`,`tipoIdentificacion`),
   CONSTRAINT `fk_estudios_empleados1` FOREIGN KEY (`idEmpleado`, `tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `estudios` (
 
 LOCK TABLES `estudios` WRITE;
 /*!40000 ALTER TABLE `estudios` DISABLE KEYS */;
-INSERT INTO `estudios` VALUES (1,'si',123,'Cedula'),(2,'no',123,'Cedula'),(3,'universitario',123124455,'Cedula'),(4,'bachiller',123124455,'Cedula'),(5,'primaria',123124455,'Cedula'),(6,'primaria',123124455,'Cedula');
+INSERT INTO `estudios` VALUES (1,'si',123,'Cedula'),(2,'no',123,'Cedula'),(3,'universitario',123124455,'Cedula'),(4,'bachiller',123124455,'Cedula'),(5,'primaria',123124455,'Cedula'),(6,'primaria',123124455,'Cedula'),(7,'araujo',2147483647,'Cedula'),(8,'uni',2147483647,'Cedula'),(9,'araujo',2147483647,'Cedula'),(10,'uni',2147483647,'Cedula'),(11,'araujo',2147483647,'Cedula'),(12,'uni',2147483647,'Cedula');
 /*!40000 ALTER TABLE `estudios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `experiencias` (
   PRIMARY KEY (`idExperiencia`),
   KEY `fk_experiencia_empleados1_idx` (`idEmpleado`,`tipoIdentificacion`),
   CONSTRAINT `fk_experiencia_empleados1` FOREIGN KEY (`idEmpleado`, `tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `experiencias` (
 
 LOCK TABLES `experiencias` WRITE;
 /*!40000 ALTER TABLE `experiencias` DISABLE KEYS */;
-INSERT INTO `experiencias` VALUES (1,'no',123,'Cedula'),(2,'si',123,'Cedula'),(3,'google',123124455,'Cedula'),(4,'google',123124455,'Cedula'),(5,'google',123124455,'Cedula'),(6,'amazon',123124455,'Cedula'),(7,'yutu',123124455,'Cedula'),(8,'amazon',123124455,'Cedula'),(9,'amazon',123124455,'Cedula');
+INSERT INTO `experiencias` VALUES (1,'no',123,'Cedula'),(2,'si',123,'Cedula'),(3,'google',123124455,'Cedula'),(4,'google',123124455,'Cedula'),(5,'google',123124455,'Cedula'),(6,'amazon',123124455,'Cedula'),(7,'yutu',123124455,'Cedula'),(8,'amazon',123124455,'Cedula'),(9,'amazon',123124455,'Cedula'),(10,'ninguna',2147483647,'Cedula'),(11,'google',2147483647,'Cedula'),(12,'ninguna',2147483647,'Cedula'),(13,'google',2147483647,'Cedula'),(14,'ninguna',2147483647,'Cedula'),(15,'google',2147483647,'Cedula');
 /*!40000 ALTER TABLE `experiencias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +326,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (1,'A',NULL,'Este es el servicio A',120,80,75,NULL,0,777),(2,'B',NULL,'Este es el servicio B',NULL,NULL,NULL,NULL,0,777);
+INSERT INTO `servicios` VALUES (100003,'MAsajes',NULL,'masajes con final feliz',NULL,NULL,NULL,NULL,25,10003);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -356,7 +356,6 @@ DROP TABLE IF EXISTS `servicioselementos`;
 CREATE TABLE `servicioselementos` (
   `idServicio` int(11) NOT NULL,
   `idElemento` int(11) NOT NULL,
-  PRIMARY KEY (`idServicio`,`idElemento`),
   KEY `fk_servicios_has_elementos_elementos1_idx` (`idElemento`),
   KEY `fk_servicios_has_elementos_servicios1_idx` (`idServicio`),
   CONSTRAINT `fk_servicios_has_elementos_elementos1` FOREIGN KEY (`idElemento`) REFERENCES `elementos` (`idElemento`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -370,6 +369,7 @@ CREATE TABLE `servicioselementos` (
 
 LOCK TABLES `servicioselementos` WRITE;
 /*!40000 ALTER TABLE `servicioselementos` DISABLE KEYS */;
+INSERT INTO `servicioselementos` VALUES (100003,100003);
 /*!40000 ALTER TABLE `servicioselementos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,7 +400,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('hola',NULL,NULL,99999,'Cedula','S'),('hola',NULL,NULL,99999,'Cedula','S'),('hola',NULL,NULL,99999,'Cedula','S'),('Andres',NULL,NULL,12313124,'Cedula','P'),('Andres',NULL,NULL,12313124,'Cedula','P'),('Andres',NULL,NULL,12313124,'Cedula','P'),('Andres',NULL,NULL,12313124,'Cedula','P'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('',NULL,NULL,0,'Cedula','S'),('a',NULL,NULL,777,'Cedula','A'),('b',NULL,NULL,0,'Cedula','G'),('b',NULL,NULL,0,'Cedula','G'),('b',NULL,NULL,0,'Cedula','G'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('b',NULL,NULL,12313124,'Cedula','S'),('Andres',NULL,NULL,12313124,'Cedula','S'),('a',NULL,NULL,998674,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G'),('Andres',NULL,NULL,123124455,'Cedula','G');
+INSERT INTO `usuarios` VALUES ('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -889,18 +889,10 @@ Declare vnumeroregistros int;
    
    if (poperacion = 0) then
 		   
-		  Select count(1) into vnumeroregistros
-		  from servicioselementos
-		  where idServicio = pidServicio and idElemento = pidElemento;
-		  
-		  if (vnumeroregistros = 0) then
 			 Insert Into 
 			  servicioselementos
 			  values(pidServicio,pidElemento);
-		  else   
-			 update servicioselementos set idservicio = pidServicio, idelemento = pidElemento
-			 where idServicio = pidServicio and idElemento = pidElemento;
-		 end if;  
+
     else
         Delete from servicioselementos 
         where idServicio = pidServicio and idElemento = pidElemento;
@@ -1043,4 +1035,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-22 21:20:45
+-- Dump completed on 2022-11-23 13:29:04

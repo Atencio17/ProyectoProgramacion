@@ -285,4 +285,33 @@ if ($controlador == "categoria") {
 
     header("location:../html/gerentedefinirelementosservicios.php");
   }
+}elseif ($controlador == "servicioelemento") {
+  if ($operacion == "guardar") {
+    $servicios = $_POST['servicio'];
+    $elementos = $_POST['elemento'];
+
+    require_once "../modelos/servicioelementomodelo.php";
+    require_once "controladorservicioselementos.php";
+
+    $controladorGenerico = new ControladorServiciosElementos();
+
+    for ($i=0; $i < count($servicios); $i++) { 
+      $objeto = new ServicioElemento($servicios[$i], $elementos[$i]);
+      $controladorGenerico->guardar($objeto);
+    }
+    
+  }elseif ($operacion == "eliminar") {
+    $servicios = $_POST['servicio'];
+    $elementos = $_POST['elemento'];
+    require_once "../modelos/servicioelementomodelo.php";
+    require_once "controladorservicioselementos.php";
+
+    $controladorGenerico = new ControladorServiciosElementos();
+
+    $objeto = new ServicioElemento($servicios, $elementos);
+
+    $controladorGenerico->eliminar($objeto);
+  }
+
+  header("location:../html/gerentedefinirelementosservicios.php");
 }

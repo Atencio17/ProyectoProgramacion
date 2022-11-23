@@ -56,6 +56,7 @@ function inputTagDos(tag){
     return tagHTML;
 }
 
+
 function crearTagA(texto, url) {
     var tagIMG = crearTagConTexto("a",texto);
     tagIMG.href = url;
