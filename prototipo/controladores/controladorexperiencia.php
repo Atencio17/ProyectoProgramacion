@@ -8,15 +8,15 @@ class ControladorExperiencias extends ConectarMySQL implements InterfazControlad
     private $tabla = "experiencias";
 
     public function guardar($objeto){
-        $sql = "call gestionarexperiencias(0,?,?,?,?)";
+        $sql = "call gestionarexperiencias(0,null,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("ssis", $objeto->idExperiencia, $objeto->experiencia, $objeto->idEmpleado, $objeto->tipoIdentificacion);
+        $sentencia->bind_param("sis", $objeto->experiencia, $objeto->idEmpleado, $objeto->tipoIdentificacion);
         $sentencia->execute();
     }
     public function eliminar($objeto){
-        $sql = "call gestionarexperiencias(1,?,?,?,?)";
+        $sql = "call gestionarexperiencias(1,null,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("ssis", $objeto->idExperiencia, $objeto->experiencia, $objeto->idEmpleado, $objeto->tipoIdentificacion);
+        $sentencia->bind_param("sis", $objeto->experiencia, $objeto->idEmpleado, $objeto->tipoIdentificacion);
         $sentencia->execute();
     }
     public function listar(){}

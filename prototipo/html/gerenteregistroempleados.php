@@ -19,7 +19,6 @@
             var input = inputTag("input");
 
             input.setAttribute("value", estudios);
-            input.setAttribute("disabled", true);
 
             var eliminar = document.createElement("input");
             eliminar.type = "button";
@@ -43,7 +42,6 @@
             var input = inputTagDos("input");
 
             input.setAttribute("value", experiencias);
-            input.setAttribute("disabled", true);
 
             var eliminar = document.createElement("input");
             eliminar.type = "button";
@@ -92,7 +90,7 @@
 
             <div style="text-align: center;display: flex;justify-content:space-evenly; margin-top:20px;">
                 <div>
-                    <form action="../controladores/controladorformulario.php" method="post">
+                    <form action="../controladores/controladorformulario.php" method="post" id="formulario">
                     <label for="">Tipo de usuario</label> <br>
                         <select name="usuarios" id="lang">
                             <option value="S">secretaria</option>
@@ -129,12 +127,11 @@
                             </thead>
 
                             <tbody id="tbodyEstudios">
-
                             </tbody>
 
                         </table>
 
-                        <input type="text" placeholder="Estudios" name="estudios" id="estudios">
+                        <input type="text" placeholder="Estudios" id="estudios">
                         <input type="button" class="btn btn-info botonTamaño" value="agregar estudios" onclick="agregar()">
 
                         <table id="tablaDos">
@@ -144,11 +141,10 @@
                             </thead>
 
                             <tbody id="tbodyExperiencia">
-
                             </tbody>
 
                         </table>
-                        <input type="text" placeholder="Experiencia" name="experiencias" id="experiencias">
+                        <input type="text" placeholder="Experiencia" id="experiencias">
                         <input type="button" class="btn btn-info botonTamaño " value="agregar Experiencia" style="margin-top: 20px;" onclick="agregarDos()"></input>
                         </div>
 
