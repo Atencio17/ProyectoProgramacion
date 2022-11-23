@@ -19,8 +19,29 @@ class ControladorClientes extends ConectarMySQL implements InterfazControladores
         $sentencia->bind_param("isssssssssss", $objeto->idcliente, $objeto->tipoidentificacion, $objeto->nombre, $objeto->apellido, $objeto->fechaNacimiento, $objeto->telefonoCelular, $objeto->correoElectronico, $objeto->direccionResidencia, $objeto->reciboPublico, $objeto->fechaNacimientoAcompañante, $objeto->telefonoAcompañante, $objeto->correoAcompañante);
         $sentencia->execute();
     }
+    public function listarDatos(){
+        $sql = "select * from ".$this->tabla;
+        return $this->getDatos($sql);
+    }
+
+    public function getDatos($sql){
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
+
     public function listar(){}
+
     public function consultarRegistro($objeto){}
+
+    public function buscar($id, $tipo){
+        $sql = "select * from ".$this->tabla. " where idcliente = ? and tipoidentificacion = ? ";
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->bind_param("is", $id, $tipo);
+        $sentencia->execute(); 
+        return $resultado = $sentencia->get_result();
+    }
 
 }
 

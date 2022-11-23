@@ -285,4 +285,29 @@ if ($controlador == "categoria") {
 
     header("location:../html/gerentedefinirelementosservicios.php");
   }
+}elseif ($controlador == "informacionpersonal"){
+    require_once "../modelos/clientemodelo.php";
+    require_once "controladorcliente.php";
+
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $telefono = $_POST["telefono"];
+    $correo = $_POST["correo"]; 
+    $direccion = $_POST["direccion"];
+    $contraseña = $_POST["contraseña"];
+    $nombreAcompañante = $_POST["nombreAcompañante"];
+    $telefonoAcompañante = $_POST["telefonoAcompañante"];
+
+    $objeto = new Cliente($nombre, $apellido, $telefono, $correo, $direccion, $contraseña, $nombreAcompañante, $telefonoAcompañante);
+    $controladorGenerico = new ControladorClientes();
+
+    if ($operacion == "guardar") {
+        
+        $controladorGenerico->guardar($objeto);
+        echo "<script>
+                window.location.href = '../html/informacionpersonal.php';
+              </script>";
+
+    
+    }
 }

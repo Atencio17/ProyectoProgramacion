@@ -15,7 +15,7 @@ class Cliente{
     public $telefonoAcompañante;
     public $correoAcompañante;
 
-    function __construct($idcliente,$tipoidentificacion,$nombre,$apellido,$fechaNacimiento,$telefonoCelular,$correoElectronico,$direccionResidencia,$reciboPublico,$fechaNacimientoAcompañante,$telefonoAcompañante,$correoAcompañante){
+    function __construct($idcliente = "",$tipoidentificacion = "",$nombre = "",$apellido = "",$fechaNacimiento = "",$telefonoCelular = "", $correoElectronico = "", $direccionResidencia = "", $reciboPublico = "", $fechaNacimientoAcompañante = "",$telefonoAcompañante = "",$correoAcompañante = ""){
 
         $this->idcliente = $idcliente;
         $this->tipoidentificacion = $tipoidentificacion;
@@ -31,10 +31,5 @@ class Cliente{
         $this->correoAcompañante = $correoAcompañante;
 
     }
-
-
 }
-
-
-
 ?>
