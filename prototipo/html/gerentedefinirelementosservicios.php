@@ -38,18 +38,13 @@
                                 <option value="javascript">Fisioterapia</option>
                             </select><br><br>
 
-                            <label for="">Precio</label><br>
-                            <input type="number"><br><br>
+                            <label for="">Establezca los elementos del servicio</label><br>
+                            <select name="lenguajes" id="lang">
+                                <option value="javascript">Kinesico</option>
+                                <option value="javascript">Fisioterapia</option>
+                            </select><br><br>
 
-                            <label for="">Ganancia en porcentaje</label><br>
-                            <input type="number"><br><br>
-                        
-
-                            <label for="">Descripción</label> <br>
-                            
-                            <textarea name="" id="" cols="25" rows="2"></textarea> <br><br>
-
-                            <a href="gerentedefinirelementosservicios.php"><button type="button" class="botonsection">Continuar</button></a>
+                            <a href="gerentedefinirelementosservicios.php"><button type="button" class="botonsection">Guardar</button></a>
                             <button type="button" class="botonsection">Eliminar</button>
                         </form>
                     </div>
