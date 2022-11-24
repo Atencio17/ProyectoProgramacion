@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -42,53 +46,34 @@
                     <tr id="fila0" style="border: solid;">
                         <th style="border: solid;">Diagnóstico clínico </th>
                         <th style="border: solid;">Peso</th>
-                        <th style="border: solid;">Presión arterial</th>
+                        <th style="border: solid;">Presión arterial sistolica</th>
+                        <th style="border: solid;">Presión arterial diastolica</th>
                         <th style="border: solid;">Derivación</th>
                         <th style="border: solid;">Resultados</th>
 
                     </tr>
-                    <tr id="fila1" style="border: solid;">
+                    <?php 
+                        include '../controladores/controladorhistoriaclinica.php';
+                        $controladorCliente = new ControladorHistoriasClinicas();
+                        $id = $_SESSION['identificacion'];
+                        $resultado = $controladorCliente->citaEspecifica($id);
+                        while ($fila = $resultado->fetch_assoc()) {
+                            echo "<tr border: 1px solid #000;>";
+                            echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['diagnostico']."</td>";
 
-                        <td style="border: solid;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, voluptatibus? Officiis tenetur tempora perferendis magni neque rerum. Accusamus libero dolorem quos sit, nemo non earum! Odio nesciunt id eveniet ut! lorem</td>
-                        <td style="border: solid;">66</td>
-                        <td style="border: solid;">78</td>
-                        <td style="border: solid;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</td>
-                        <td style="border: solid;">Positivos</td>
+                            echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['peso']."</td>";
 
-                    </tr>
-                    <tr id="fila2" style="border: solid;">
+                            echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['presionsistolica']."</td>";
 
-                        <td style="border: solid;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum excepturi iusto labore repellat possimus ipsum recusandae quasi. Maxime error cum est velit, adipisci assumenda, corporis voluptatum, eveniet corrupti consequatur
-                            dolorem.
-                        </td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
+                            echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['presiondiastolica']."</td>";
 
-                    </tr>
-                    <tr id=" fila3 " style="border: solid; ">
+                            echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['derivacion']."</td>";
 
-                        <td style="border: solid; ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum excepturi iusto labore repellat possimus ipsum recusandae quasi. Maxime error cum est velit, adipisci assumenda, corporis voluptatum, eveniet corrupti consequatur
-                            dolorem.
-                        </td>
-                        <td style="border: solid; "></td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
+                            echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['evolucion']."</td>";
 
-                    </tr>
-                    <tr id="fila4 " style="border: solid; ">
-
-                        <td style="border: solid; ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rerum excepturi iusto labore repellat possimus ipsum recusandae quasi. Maxime error cum est velit, adipisci assumenda, corporis voluptatum, eveniet corrupti consequatur
-                            dolorem.
-                        </td>
-                        <td style="border: solid; "></td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
-                        <td style="border: solid;"></td>
-
-                    </tr>
+                            echo "</tr>";
+                        }
+                    ?>
 
                 </tr>
 

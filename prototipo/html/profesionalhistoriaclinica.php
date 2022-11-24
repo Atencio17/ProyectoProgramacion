@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +34,7 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="profesionaldiagnostico.html"><button type="button " class="botones ">Diagnóstico inicial</button></a>
+                <a href="profesionaldiagnostico.php"><button type="button " class="botones ">Diagnóstico inicial</button></a>
 
             </div>
         </aside>
@@ -38,29 +42,49 @@
         <section>
             <h4 style="text-align: center; ">HISTORIA CLÍNICA</h4>
             <div style="text-align: center; margin-top:15px;">
-                
-                <form action="">
-                    <label for="">Buscar Paciente</label>
-                    <input type="text" name="">
-                    <button class="botonsection" onclick="activar()">Buscar</button><br><br>
+                <form action="../controladores/controladorformulario.php" method="post">
+                <label for="">Buscar Paciente</label><br>
+                    <input type="number" name="id"> <br>
+                    
+                    <label for="">Tipo de identificacion</label><br>
+
+                        <select name="tipos" id="lang">
+                        <option value="Cedula">cedula</option>
+                        <option value="tarjeta de identidad">tarjeta de identidad</option>
+                        <option value="cedula de extranjeria">cedula de extranjeria</option>
+
+                    </select><br>
+                    <input type="text" name="controlador" value="profesional" hidden>
+                    <input type="submit" name="operacion" value="buscar" class="botonsection"><br><br>
+                </form>
+
+
+
+                <form action="../controladores/controladorformulario.php" method="post">
+
 
                     <label for="">Sesiones restantes</label><br>
-                    <input type="text" name="" id="text1"><br><br>
+                    <input type="number" name="sesion" id="text1" value="<?php echo isset($_POST['sesion']) ? $_POST['sesion'] : '';?>" readonly><br><br>
     
                 
                     <label for="">Peso</label><br>
-                    <input type="text" name="" id="text2"><br><br>
+                    <input type="number" name="peso" id="text2" value="<?php echo isset($_POST['peso']) ? $_POST['peso'] : '';?>"><br><br>
                 
                 
                     <label for="">Presión sistolica</label><br>
-                    <input type="text" name="" id="text3"><br><br>
+                    <input type="number" name="puno" id="text3" value="<?php echo isset($_POST['puno']) ? $_POST['puno'] : '';?>"><br><br>
     
                     <label for="">Presión diastólica</label><br>
-                    <input type="text" name="" id="text3"><br><br>
+                    <input type="number" name="pdos" id="text3" value="<?php echo isset($_POST['pdos']) ? $_POST['pdos'] : '';?>"><br><br>
     
                     <label for="">Proxima cita</label><br>
-                    <input type="datetime-local" name="" id=""><br>
+                    <input type="datetime-local" name="cita" id=""><br>
+
+                    <input type="text" name="empleado" value="<?php echo $_SESSION['identificacion']; ?>" hidden>
+                    <input type="text" name="cliente" value="<?php echo isset($_POST['cliente']) ? $_POST['cliente'] : '';?>" hidden>
     
+                    <input type="text" name="operacion" value="actualizar" hidden>
+                    <input type="text" name="controlador" value="citas" hidden>
                     <button type="submit" class="botonsection">Guardar</button>
                 </form>
             </div>

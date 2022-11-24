@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,44 +44,33 @@
 
         <section>
             <h4 style="text-align: center; ">CONSULTA Y CANCELAMIENTO DE CITAS</h4>
+            
             <table style=" width: 100%; justify-content: space-around;">
-                <tr>
-                    <th style="text-align:center ; justify-content: center;"></th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <tr id="fila0">
-                        <th>tipo de servicio</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                    </tr>
-                    <tr id="fila1">
-                        <td>Columna 2.1</td>
-                        <td>Columna 2.2</td>
-                        <td>Columna 2.3</td>
-                        <td><input type="button" class="borrar" value="Eliminar" /></td>
-                    </tr>
-                    <tr id="fila2">
-                        <td>Columna 3.1</td>
-                        <td>Columna 3.2</td>
-                        <td>Columna 3.3</td>
-                        <td><input type="button" class="borrar" value="Eliminar" /></td>
-                    </tr>
-                    <tr id="fila3">
-                        <td>Columna 4.1</td>
-                        <td>Columna 4.2</td>
-                        <td>Columna 4.3</td>
-                        <td><input type="button" class="borrar" value="Eliminar" /></td>
-                    </tr>
-                    <tr id="fila4">
-                        <td>Columna 5.1</td>
-                        <td>Columna 5.2</td>
-                        <td>Columna 5.3</td>
-                        <td><input type="button" class="borrar" value="Eliminar" /></td>
-                    </tr>
-
-                </tr>
-
+               <?php 
+                include '../controladores/controladorcitas.php';
+                $controladorCliente = new ControladorCitas();
+                $id = $_SESSION['identificacion'];
+                $resultado = $controladorCliente->citaEspecifica($id);
+                while ($fila = $resultado->fetch_assoc()) {
+                    echo "<tr border: 1px solid #000;>";
+                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['cita']."</td>";
+                    echo "<td border: 1px solid #000;> <br>
+                    
+                    <div>
+                    <form action='../controladores/controladorformulario.php' method='post'>
+                    <input type='number' name='codigo' value=". $fila['idcitas'] ." hidden>
+                    <input type='number' name='hora' value=". $fila['cita'] ." hidden>
+                    <input type='number' name='id' value=". $fila['idCliente'] ." hidden>
+                    <input type='number' name='tipo' value=". $fila['clientes_tipoIdentificacion'] ." hidden>
+                    <input type='text' name='controlador' value='citas' hidden>
+                    <td border: 1px solid #000;><input type='submit' name='operacion' value='eliminar' class='btn btn-info botonTamaño' style='margin-right:5px'></td>
+                    </form> 
+                    </div>
+                    
+                    </td>";
+                    echo "</tr>";
+                }
+               ?>
             </table>
         </section>
     </div>

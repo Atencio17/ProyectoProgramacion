@@ -375,4 +375,146 @@ if ($controlador == "categoria") {
     $controladorGenerico->actualizarPerfil($nombre,$apellido,$telefono,$correo,$id);
     header("location: ../html/informacionpersonal.php");
   }
+}elseif ($controlador == "citas") {
+
+  
+  if ($operacion == "agendar") {
+      
+    $id = $_POST['identi'];
+    $cita = $_POST['cita'];
+    $tipo = $_POST['tipoid'];
+    $cita = str_replace("T"," ",$cita);
+    $cita = $cita.":00";
+  
+    require_once "../modelos/citasmodelo.php";
+    require_once "controladorcitas.php";
+    $controladorGenerico = new ControladorCitas();
+    $objeto = new Citas(null,$cita,$id,$tipo,null,null);
+    $controladorGenerico->guardar($objeto);
+    header("location:../html/AgendarCitas.php");
+
+  }elseif ($operacion == "eliminar") {
+
+    $cita = $_POST['codigo'];
+    $hora = $_POST['hora'];
+    $id = $_POST['id'];
+    $tipo = $_POST['tipo'];
+
+    require_once "../modelos/citasmodelo.php";
+    require_once "controladorcitas.php";
+    $controladorGenerico = new ControladorCitas();
+    $objeto = new Citas($cita,$hora,$id,$tipo,null,null);
+    $controladorGenerico->eliminar($objeto);
+    header("location:../html/consultarCita.php");
+
+  }elseif ($operacion == "actualizar") {
+
+    require_once "../modelos/historiaclinicamodelo.php";
+    require_once "controladorhistoriaclinica.php";
+    require_once("../modelos/empleadomodelo.php");
+    require_once("controladorempleado.php");
+    $controladorGenerico = new ControladorEmpleados();
+    
+    $sesiones = $_POST['sesion'];
+    $peso = $_POST['peso'];
+    $puno = $_POST['puno'];
+    $pdos = $_POST['pdos'];
+    $cita = $_POST['cita'];
+    $id = $_POST['empleado'];
+    $cliente = $_POST['cliente'];
+
+    $resultado = $controladorGenerico->buscarEmpleados($id);
+    while ($fila = $resultado->fetch_assoc()) {
+      $tipoEmpleado = $fila['tipoIdentificacion'];
+    }
+    
+    $controladorGenerico = new ControladorHistoriasClinicas();
+    $resultado = $controladorGenerico->citaEspecificaTres($cliente);
+    while ($fila = $resultado->fetch_assoc()) {
+      $tipo = $fila['tipoIdentificacion'];
+    }
+    
+    $controladorGenerico->actualizarHistoria($puno,$pdos,$peso,$sesiones-1,$cliente,$tipo);
+
+    $cita = str_replace("T"," ",$cita);
+    $cita = $cita.":00";
+  
+    require_once "../modelos/citasmodelo.php";
+    require_once "controladorcitas.php";
+    $controladorGenerico = new ControladorCitas();
+    $controladorGenerico->citaEspecifica($cliente);
+
+    $resultado = $controladorGenerico->citaEspecifica($cliente);
+    while ($fila = $resultado->fetch_assoc()) {
+      $idcita = $fila['idcitas'];
+    }
+
+    $objeto = new Citas($idcita,$cita,$cliente,$tipo,$id,$tipoEmpleado);
+    $controladorGenerico->guardar($objeto);
+
+    header("location: ../html/profesionalhistoriaclinica.php");
+  }
+
+}elseif ($controlador == "profesional") {
+  
+  if ($operacion == "guardar") {
+    $id = $_POST['id'];
+    $tipo = $_POST['tipos'];
+    $peso = $_POST['peso'];
+    $puno = $_POST['puno'];
+    $pdos = $_POST['pdos'];
+    $derivacion = $_POST['derivacion'];
+    $diagnostico = $_POST['diagnostico'];
+    $sesiones = $_POST['sesion'];
+    $servicios = $_POST['servicio'];
+
+    
+    require_once "../modelos/historiaclinicamodelo.php";
+    require_once "controladorhistoriaclinica.php";
+
+    $controladorGenerico = new ControladorHistoriasClinicas();
+    $objeto = new HistoriaClinica(null,$puno,$pdos,$peso,$derivacion,$diagnostico,$sesiones,$sesiones,null,$id,$tipo);
+    $controladorGenerico->guardar($objeto);
+    $resultado = $controladorGenerico->buscar($id,$tipo);
+    
+    while ($fila = $resultado->fetch_assoc()) {
+      $consulta = $fila['idHistoriaClinica'];  
+    }
+    require_once "../modelos/historiaclinicaserviciomodelo.php";
+    require_once "controladorhistoriaclinicaservicio.php";
+
+    for ($i=0; $i < count($servicios); $i++) { 
+      
+      $controladorGenerico = new ControladorHistoriaClinicaServicio();
+      $objeto = new HistoriaClinicaServicio($consulta,$servicios[$i]);
+      $controladorGenerico->guardar($objeto);
+
+    }
+
+    header("location: ../html/profesionalpaginaprincipal.php");
+
+  }elseif ($operacion == "buscar"){
+
+    $id = $_POST["id"];
+    $tipo = $_POST["tipos"];
+    require_once "../modelos/historiaclinicamodelo.php";
+    require_once "controladorhistoriaclinica.php";    
+    $controladorGenerico = new ControladorHistoriasClinicas();
+    $resultado = $controladorGenerico->citaEspecificaDos($id,$tipo);
+    
+    echo "<form action='../html/profesionalhistoriaclinica.php' method='post'>";
+    while ($fila = $resultado->fetch_assoc()) {
+      echo "<input type='number' name='sesion' value=".$fila['numeroDeSesiones'].">";
+      echo "<input type='number' name='peso' value=".$fila['peso'].">";
+      echo "<input type='number' name='puno' value=".$fila['presionsistolica'].">";
+      echo "<input type='number' name='pdos' value=".$fila['presiondiastolica'].">";
+      echo "<input type='number' name='cliente' value=".$id.">";
+    }
+    echo "<input type='submit' id='enviar'>";
+    echo "<script>
+            var elemento = document.getElementById('enviar');
+            elemento.click();
+          </script>";
+    echo "</form>";
+  }
 }

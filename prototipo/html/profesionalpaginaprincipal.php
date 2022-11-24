@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,8 +28,8 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="profesionaldiagnostico.html"><button type="button " class="botones ">Diagnóstico inicial </button></a><br>
-                <a href="profesionalhistoriaclinica.html"><button type="button " class="botones ">Historia clínica</button></a><br>
+                <a href="profesionaldiagnostico.php"><button type="button " class="botones ">Diagnóstico inicial </button></a><br>
+                <a href="profesionalhistoriaclinica.php"><button type="button " class="botones ">Historia clínica</button></a><br>
             </div>
         </aside>
 

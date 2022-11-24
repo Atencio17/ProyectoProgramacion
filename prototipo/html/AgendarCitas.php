@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -42,10 +46,23 @@
                 <tr>
                     <td></td>
                     <td style="width: 100%; ">
+                        <form action="../controladores/controladorformulario.php" method="post">
                         <p>Ingrese la fecha y la hora en la que desea agendar la cita: </p>
-
-                        <input required type="datetime-local" name="" id=""><br> <br>
-                        <button type=" button " class="botonsection">Agendar cita</button>
+                        <?php 
+                        include_once "../controladores/controladorcliente.php";
+                        $controlador = new ControladorClientes();
+                        $id = $_SESSION['identificacion'];
+                        $resultado = $controlador->tipoId($id);
+                        while ($fila = $resultado->fetch_assoc()):
+                        ?>
+                        <input type="number" name="identi" value="<?php echo $id ?>" hidden>
+                        <input type="text" name="tipoid" value="<?php echo $fila['tipoidentificacion']; ?>" hidden>
+                        <?php endwhile; ?>
+                        <input required type="datetime-local" name="cita"><br> <br>
+                        <input type="text" name="controlador" value="citas" hidden>
+                        <input type="text" name="operacion" value="agendar" hidden>
+                        <button type="submit" class="botonsection">Agendar cita</button>
+                        </form>
 
                     </td>
 

@@ -58,6 +58,14 @@ class ControladorClientes extends ConectarMySQL implements InterfazControladores
         $sentencia->execute(); 
         return $resultado = $sentencia->get_result();
     }
+
+    public function tipoId($id){
+        $sql = "select tipoidentificacion from ".$this->tabla." where idcliente = ?";
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->bind_param("i", $id);
+        $sentencia->execute(); 
+        return $resultado = $sentencia->get_result();
+    }
 }
 
 ?>
