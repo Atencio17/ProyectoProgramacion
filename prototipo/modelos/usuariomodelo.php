@@ -1,16 +1,16 @@
 <?php
 
 class Usuario{
-    public $contraseña;
+    public $contrasena;
     public $idCliente;
     public $tipoIdentificacionCliente;
     public $idEmpleado;
     public $tipoIdentificacionEmpleado;
     public $tipo;
 
-    function __construct($contraseña,$idCliente, $tipoIdentificacionCliente, $idEmpleado, $tipoIdentificacionEmpleado, $tipo){
+    function __construct($contrasena,$idCliente, $tipoIdentificacionCliente, $idEmpleado, $tipoIdentificacionEmpleado, $tipo){
 
-        $this->contraseña = $contraseña;
+        $this->contrasena = $contrasena;
         $this->idCliente = $idCliente;
         $this->tipoIdentificacionCliente = $tipoIdentificacionCliente;
         $this->idEmpleado = $idEmpleado;

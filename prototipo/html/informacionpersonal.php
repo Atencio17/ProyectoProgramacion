@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,71 +23,55 @@
     </header>
 
     <nav>
-        <a href="oficinavirtual.html "><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
-        <a href="iniciodesesion.html" style="justify-content: flex-end; ">Cerrar sesión</a>
+        <a href="oficinavirtual.php "><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+        <a href="iniciodesesion.php" style="justify-content: flex-end; ">Cerrar sesión</a>
     </nav>
 
     <div class="row">
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="agendarcitas.html"><button type="button " class="botones ">Agendar citas médicas</button></a><br>
-                <a href="consultarcita.html"><button type="button " class="botones ">Consultar y cancelar cita</button></a><br>
-                <a href="evoluciondetratamiento.html"><button type="button " class="botones ">Evolución del tratamiento</button></a><br>
+                <a href="agendarcitas.php"><button type="button " class="botones ">Agendar citas médicas</button></a><br>
+                <a href="consultarcita.php"><button type="button " class="botones ">Consultar y cancelar cita</button></a><br>
+                <a href="evoluciondetratamiento.php"><button type="button " class="botones ">Evolución del tratamiento</button></a><br>
             </div>
         </aside>
 
         <section>
             <h4 style="text-align: center; ">INFORMACIÓN PERSONAL</h4>
-        <form action="../controladores/controladorformulario.php" method="post"></form>
+        <form action="../controladores/controladorformulario.php" method="post">
             <div style="text-align: center; display: flex; justify-content:space-evenly; margin-top: 40px;">
                 
-            <div>
-                    <strong>identificación de usuario</strong><br>
-                    <input type="text" name="nombre" id=""><br>
-
-                    <input  type="text" value="informacionpersonal" hidden name="controlador">
-                    <input type="submit" class="btn btn-info botonTamaño" value="buscar" style="margin-top: 20px;" name="operacion"></input>
-                </div>
 
                 <div>
-
+                    <?php 
+                        include_once "../controladores/controladorcliente.php";
+                        $controlador = new ControladorClientes();
+                        $id = $_SESSION['identificacion'];
+                        $resultado = $controlador->perfil($id);
+                        while ($fila = $resultado->fetch_assoc()):
+                    ?>
                     <table>
                         <tr>Nombre de usuario:</tr>
-                        <tr><input type="text" name="nombre" id="" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>"></tr><br><br>
+                        <tr><input type="text" name="nombre" id="" value="<?php echo $fila['nombre']; ?>"></tr><br><br>
 
                         <tr>Apellido de usuario:</tr>
-                        <tr><input type="text" name="apellido" id="" value="<?php echo isset($_POST['apellido']) ? $_POST['apellido'] : '';?>"></tr><br><br>
+                        <tr><input type="text" name="apellido" id="" value="<?php echo $fila['apellido']; ?>"></tr><br><br>
 
                         <tr>telefono de usuario:</tr>
-                        <tr><input type="number" name="telefono" id="" value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : '';?>"></tr><br><br>
+                        <tr><input type="number" name="telefono" id="" value="<?php echo $fila['telefonoCelular']; ?>"></tr><br><br>
 
                         <tr>Correo electrónico:</tr>
-                        <tr><input type="text" name="correo" id="" value="<?php echo isset($_POST['correo']) ? $_POST['correo'] : '';?>"></tr><br><br>
-
-                        <tr>Correo electrónico:</tr>
-                        <tr><input type="text" name="direccion" id="" value="<?php echo isset($_POST['direccion']) ? $_POST['direccion'] : '';?>"></tr><br><br>
-
-                        <tr>Correo electrónico:</tr>
-                        <tr><input type="password" name="contraseña" id="" value="<?php echo isset($_POST['contraseña']) ? $_POST['contraseña'] : '';?>"></tr><br><br>
+                        <tr><input type="text" name="correo" id="" value="<?php echo $fila['correoElectronico']; ?>"></tr><br><br>
                         
-                    </table>
 
+                        <input  type="text" value="actualizarinformacion" hidden name="controlador">
+                        <input type="submit" class="btn btn-info botonTamaño" value="guardar" style="margin-top: 20px;" name="operacion"></input>
+                    </table>
+                    
                 </div>
                     
-                <div>
-
-                    <table>
-                        <tr>Nombre del acompañante:</tr>
-                        <tr><input type="text" name="nombreAcompañante" id="" value="<?php echo isset($_POST['nombreAcompañante']) ? $_POST['nombreAcompañante'] : '';?>"></tr><br><br>
-
-                        <tr>Nombre del acompañante:</tr>
-                        <tr><input type="number" name="telefonoAcompañante" id="" value="<?php echo isset($_POST['telefonoAcompañante']) ? $_POST['telefonoAcompañante'] : '';?>"></tr><br><br>
-                    </table>
-
-                    <input  type="text" value="informacionpersonal" hidden name="controlador">
-                    <input type="submit" class="btn btn-info botonTamaño" value="guardar" style="margin-top: 20px;" name="operacion"></input>
-                </div> 
+                <?php endwhile;?>
                 
             </div>
         </form>       

@@ -1,3 +1,9 @@
+<?php 
+session_name("Usuario");
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../recursos/images/cecarlogo.png">
     <script src="../js/funcionalidad.js"></script>
+
 </head>
 
 <body style="background-color: #68D8D6;">
@@ -24,22 +31,19 @@
         <div class="col">
             <div class="container-fluid colorHeaderAndFooter">
                 <div class="position-absolute top-50 start-50 translate-middle fondoDivLogueo divContainerLogin">
-                    <form>
+                    <form method="post" action="../controladores/controladorformulario.php">
                         <div class="mb-3 ">
-                            <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
-                            <input type="text" class="form-control " id="usuario" aria-describedby="emailHelp " placeholder="ejemplo@mail.com">
+                            <label for="exampleInputEmail1" class="form-label">Identificacion</label>
+                            <input type="text" class="form-control " name="usuario" aria-describedby="emailHelp " placeholder="ejemplo@mail.com">
 
                         </div>
                         <div class="mb-3 ">
                             <label for="exampleInputPassword1 " class="form-label ">Contraseña</label>
-                            <input type="password" class="form-control " id="password" placeholder="Contraseña">
+                            <input type="password" class="form-control " name="password" placeholder="Contraseña">
                         </div>
-                        <div class="mb-3 form-check ">
-                            <input type="checkbox " class="form-check-input " id="exampleCheck1 ">
-                            <label class="form-check-label " for="exampleCheck1 ">Mantener sesión</label>
-                        </div>
-                        
-                        <button type="button" onclick="loguear()" class="btn btn-info botonTamaño">iniciar sesión</button>
+                        <input type="text" name="controlador" value="usuarios" hidden>
+                        <input type="text" name="operacion" value="entrar" hidden>
+                        <button type="submit" class="btn btn-info botonTamaño">iniciar sesión</button>
 
                     </form>
                 </div>
@@ -80,3 +84,4 @@
 </body>
 
 </html>
+

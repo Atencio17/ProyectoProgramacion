@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,10 +28,10 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="agendarcitas.html"><button type="button " class="botones ">Agendar citas médicas</button></a><br>
-                <a href="consultarcita.html"><button type="button " class="botones ">Consultar y cancelar cita</button></a><br>
-                <a href="evoluciondetratamiento.html"><button type="button " class="botones ">Evolución del tratamiento</button></a><br>
-                <a href="informacionpersonal.html"><button type="button " class="botones ">Información personal</button></a>
+                <a href="agendarcitas.php"><button type="button " class="botones ">Agendar citas médicas</button></a><br>
+                <a href="consultarcita.php"><button type="button " class="botones ">Consultar y cancelar cita</button></a><br>
+                <a href="evoluciondetratamiento.php"><button type="button " class="botones ">Evolución del tratamiento</button></a><br>
+                <a href="informacionpersonal.php"><button type="button " class="botones ">Información personal</button></a>
             </div>
         </aside>
 

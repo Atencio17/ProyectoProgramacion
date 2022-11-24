@@ -310,4 +310,69 @@ if ($controlador == "categoria") {
 
     
     }
+}elseif ($controlador == "usuarios") {
+
+  $identificacion = $_POST['usuario'];
+  $password = $_POST['password'];
+
+  if ($operacion == "entrar") {
+    require_once "../modelos/usuariomodelo.php";
+    require_once "controladorusuario.php";
+    session_start();
+    $controladorGenerico = new ControladorUsuarios();
+    
+    $resultado = $controladorGenerico->consultarRegistroCliente($identificacion, $password);
+
+    if ($resultado->num_rows == 0) {
+      $resultado = $controladorGenerico->consultarRegistroEmpleado($identificacion,$password);
+      if ($resultado->num_rows == 0) {
+        echo "<script>alert('Usuario incorrecto')</script>";
+      }else {
+        $fila = $resultado->fetch_assoc();
+        $tipo = $fila['tipo'];
+
+        session_name("Usuario");
+        session_start();
+        
+        $_SESSION['usuario'] = $tipo;
+        $_SESSION['identificacion'] = $identificacion;
+
+        if ($tipo == "A") {
+          header("location:../html/administradorpaginaprincipal.php");
+        }elseif ($tipo == "S") {
+          header("location:../html/secretariapaginaprincipal.php");
+        }elseif ($tipo == "G") {
+          header("location:../html/gerentepaginaprincipal.php");
+        }elseif ($tipo == "P") {
+          header("location:../html/profesionalpaginaprincipal.php");
+        }
+      }
+    }else {
+      $fila = $resultado->fetch_assoc();
+      $tipo = $fila['tipo'];
+      
+      session_name("Usuario");
+      session_start();
+      $_SESSION['usuario'] = $tipo;
+      $_SESSION['identificacion'] = $identificacion;
+
+      if ($tipo == "C") {
+        header("location:../html/oficinavirtual.php");
+      }
+    }
+  }
+}elseif ($controlador == "actualizarinformacion") {
+  if ($operacion == "guardar") {
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $telefono = $_POST['telefono'];
+    $correo = $_POST['correo'];
+    session_start();
+    $id = $_SESSION['identificacion'];
+    require_once "../modelos/clientemodelo.php";
+    require_once "controladorcliente.php";
+    $controladorGenerico = new ControladorClientes();
+    $controladorGenerico->actualizarPerfil($nombre,$apellido,$telefono,$correo,$id);
+    header("location: ../html/informacionpersonal.php");
+  }
 }

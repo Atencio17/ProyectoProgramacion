@@ -43,6 +43,21 @@ class ControladorClientes extends ConectarMySQL implements InterfazControladores
         return $resultado = $sentencia->get_result();
     }
 
+    public function perfil($id){
+        $sql = "select * from ".$this->tabla. " where idcliente = ?";
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->bind_param("i", $id);
+        $sentencia->execute(); 
+        return $resultado = $sentencia->get_result();
+    }
+
+    public function actualizarPerfil($nombre,$apellido,$telefono,$correo,$id){
+        $sql = "update ".$this->tabla. " set nombre = ?, apellido = ?, telefonoCelular = ?, correoElectronico = ? where idcliente = ?";
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->bind_param("ssisi", $nombre,$apellido,$telefono,$correo,$id);
+        $sentencia->execute(); 
+        return $resultado = $sentencia->get_result();
+    }
 }
 
 ?>

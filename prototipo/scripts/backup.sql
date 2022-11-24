@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `citas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `citas` (
-  `idcitas` int(11) NOT NULL,
+  `idcitas` int(11) NOT NULL AUTO_INCREMENT,
   `cita` datetime NOT NULL,
   `idCliente` int(11) NOT NULL,
   `clientes_tipoIdentificacion` enum('Cedula','tarjeta de identidad','cedula de extranjeria') NOT NULL,
@@ -101,6 +101,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (123,'Cedula','andres','atencio','2003-07-10','333','hola@gmail.com','calle falsa','si','2003-02-10','1111','adios@gmail.com');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,9 +127,47 @@ CREATE TABLE `elementos` (
 
 LOCK TABLES `elementos` WRITE;
 /*!40000 ALTER TABLE `elementos` DISABLE KEYS */;
-INSERT INTO `elementos` VALUES (10003,'aceite',200,'aceite para masajes'),(100003,'locion',400,'locion sin mas');
+INSERT INTO `elementos` VALUES (10003,'aceite',200,'aceite para masajes'),(100003,'locion',900,'locion sin mas');
 /*!40000 ALTER TABLE `elementos` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER costoElemento_au AFTER UPDATE 
+ON elementos FOR EACH ROW  
+BEGIN  
+	declare vprecio int;
+	declare vcosto int;
+	declare vporcentaje int;
+    declare vservicio int;
+    
+    select se.idServicio into vservicio from servicioselementos se, elementos e
+	where (e.idElemento = se.idElemento) and se.idelemento = new.idelemento;
+
+    select sum(e.costo) into vcosto
+	from ServiciosElementos se, elementos e
+	where se.idservicio = vservicio and se.idelemento = e.idelemento;
+
+	select porcentajeGanancia into vporcentaje
+	from servicios
+	where idservicio = vservicio;
+
+	set vprecio = vcosto + (vcosto*vporcentaje)/100;
+
+	update servicios set precio = vprecio, costoServicio = vcosto
+	where idServicio = vservicio;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `empleados`
@@ -152,7 +191,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (2147483647,'Cedula','a','v');
+INSERT INTO `empleados` VALUES (9,'Cedula','A','Z'),(2147483647,'Cedula','a','v');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +281,7 @@ DROP TABLE IF EXISTS `historiasclinicas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `historiasclinicas` (
-  `idHistoriaClinica` int(11) NOT NULL,
+  `idHistoriaClinica` int(11) NOT NULL AUTO_INCREMENT,
   `presionsistolica` int(11) NOT NULL,
   `presiondiastolica` int(11) NOT NULL,
   `peso` int(11) NOT NULL,
@@ -256,7 +295,7 @@ CREATE TABLE `historiasclinicas` (
   PRIMARY KEY (`idHistoriaClinica`),
   KEY `fk_historiasclinicas_clientes1_idx` (`idCliente`,`tipoIdentificacion`),
   CONSTRAINT `fk_historiasclinicas_clientes1` FOREIGN KEY (`idCliente`, `tipoIdentificacion`) REFERENCES `clientes` (`idCliente`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,6 +304,7 @@ CREATE TABLE `historiasclinicas` (
 
 LOCK TABLES `historiasclinicas` WRITE;
 /*!40000 ALTER TABLE `historiasclinicas` DISABLE KEYS */;
+INSERT INTO `historiasclinicas` VALUES (2,122,60,55,'ningunas','problemas comunes',NULL,10,'Negativa',123,'Cedula');
 /*!40000 ALTER TABLE `historiasclinicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,6 +332,7 @@ CREATE TABLE `historiasclinicasservicios` (
 
 LOCK TABLES `historiasclinicasservicios` WRITE;
 /*!40000 ALTER TABLE `historiasclinicasservicios` DISABLE KEYS */;
+INSERT INTO `historiasclinicasservicios` VALUES (2,100003);
 /*!40000 ALTER TABLE `historiasclinicasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +367,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (100003,'MAsajes',NULL,'masajes con final feliz',NULL,NULL,NULL,NULL,25,10003);
+INSERT INTO `servicios` VALUES (1,'prueba',NULL,'si',NULL,NULL,NULL,NULL,99,1),(100003,'Masajes',NULL,'Masajes con finales felices',120,90,80,NULL,25,1);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -338,8 +379,31 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger ventadetalle_bu before update on servicios for each row 
-update ventadetalle set precio = old.precio where idservicio = old.idservicio */;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER evolucion_au AFTER UPDATE 
+ON servicios FOR EACH ROW  
+BEGIN  
+	declare vpeso int;
+	declare vpresiona int;
+	declare vpresiond int;
+    declare vservicio int;
+    declare vhistoria int;
+    declare vevolucion varchar(45);
+    
+    select idservicio into vservicio from servicios where idServicio = new.idServicio;
+    
+    select peso into vpeso from servicios where idServicio = new.idServicio;
+    select presionsistolica into vpresiona from servicios where idServicio = new.idServicio;
+    select presiondiastolica into vpresiond from servicios where idServicio = new.idServicio;
+    
+    select hs.idHistoriaClinica into vhistoria from historiasclinicas h, historiasclinicasservicios hs 
+    where h.idHistoriaClinica = hs.idHistoriaClinica and hs.idServicio = vservicio;
+    
+    select if(peso < vpeso and presionsistolica < vpresiona and presiondiastolica < vpresiond, "Positiva", "Negativa") into vevolucion 
+    from historiasclinicas where idHistoriaClinica = vhistoria;
+    
+    update historiasclinicas set evolucion = vevolucion
+	where idHistoriaClinica = vhistoria;
+END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -381,7 +445,7 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
-  `contraseña` varbinary(16) NOT NULL,
+  `contrasena` varbinary(16) NOT NULL,
   `idCliente` int(11) DEFAULT NULL,
   `tipoIdentificacionCliente` enum('Cedula','tarjeta de identidad','cedula de extranjeria') DEFAULT NULL,
   `idEmpleado` int(11) DEFAULT NULL,
@@ -400,7 +464,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S');
+INSERT INTO `usuarios` VALUES ('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S'),('hola',123,'Cedula',NULL,NULL,'C'),('hola',123,'Cedula',NULL,NULL,'C'),('si',NULL,NULL,2147483647,'Cedula','G'),('123',NULL,NULL,9,'Cedula','S'),('123',NULL,NULL,9,'Cedula','S'),('456',NULL,NULL,9,'Cedula','A'),('789',NULL,NULL,9,'Cedula','P'),('1',NULL,NULL,9,'Cedula','G');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,7 +504,7 @@ DROP TABLE IF EXISTS `ventaencabezado`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ventaencabezado` (
-  `idventaEncabezado` int(11) NOT NULL,
+  `idventaEncabezado` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `total` int(11) NOT NULL,
   `idCliente` int(11) NOT NULL,
@@ -448,7 +512,7 @@ CREATE TABLE `ventaencabezado` (
   PRIMARY KEY (`idventaEncabezado`),
   KEY `fk_ventaEncabezado_clientes1_idx` (`idCliente`,`tipoIdentificacion`),
   CONSTRAINT `fk_ventaEncabezado_clientes1` FOREIGN KEY (`idCliente`, `tipoIdentificacion`) REFERENCES `clientes` (`idCliente`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -457,8 +521,36 @@ CREATE TABLE `ventaencabezado` (
 
 LOCK TABLES `ventaencabezado` WRITE;
 /*!40000 ALTER TABLE `ventaencabezado` DISABLE KEYS */;
+INSERT INTO `ventaencabezado` VALUES (1,'2022-11-24',300,123,'Cedula'),(2,'2022-04-14',20,123,'Cedula');
 /*!40000 ALTER TABLE `ventaencabezado` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER venta_bi BEFORE INSERT
+ON ventaencabezado FOR EACH ROW  
+BEGIN  
+	declare fechafestiva int;
+    
+    select fecha into fechafestiva from festivos where fecha = new.fecha;
+    
+    if(dayname(new.fecha)= "Sunday" or dayname(new.fecha) = "Saturday" or 
+    (dayname(new.fecha) = "Monday" and fechafestiva = new.fecha)) then
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La empresa no vende fines de semana ni lunes festivos';
+    end if;
+
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Dumping routines for database 'proyecto'
@@ -756,18 +848,22 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarhistoriasclinicas`(poperacion int,pidHistoriaClinica int(11),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarhistoriasclinicas`(poperacion int,pidHistoriaClinica int,
 ppresionsistolica int(11) ,ppresiondiastolica int(11) ,ppeso int(11) ,pderivacion longtext ,pdiagnostico longtext ,
 pnumeroDeSesiones int(11) ,pSesionesTotal int(11) ,pevolucion varchar(45) ,pidCliente int(11) 
 ,ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
 BEGIN
 Declare vnumeroregistros int;
-   
+declare vhistoria int;
+
+select idHistoriaClinica into vhistoria from historiasclinicas 
+where idcliente = pidCliente and tipoIdentificacion = ptipoIdentificacion;
+
    if (poperacion = 0) then
 		   
 		  Select count(1) into vnumeroregistros
 		  from historiasclinicas
-		  where idHistoriaClinica = pidHistoriaClinica;
+		  where idHistoriaClinica = vhistoria;
 		  
 		  if (vnumeroregistros = 0) then
 			 Insert Into 
@@ -779,11 +875,11 @@ Declare vnumeroregistros int;
 								 peso = ppeso, derivacion = pderivacion, diagnostico = pdiagnostico
 								,numerodesesiones = pnumeroDeSesiones, sesionestotal = pSesionesTotal
                                 , evolucion = pevolucion, idcliente = pidCliente,tipoidentificacion = ptipoIdentificacion
-			 where idHistoriaClinica = pidHistoriaClinica;
+			 where idHistoriaClinica = vhistoria;
 		 end if;  
     else
         Delete from historiasclinicas 
-        where idHistoriaClinica = pidHistoriaClinica;
+        where idHistoriaClinica = vhistoria;
 	end if;   
 END ;;
 DELIMITER ;
@@ -883,20 +979,52 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarservicioselementos`(poperacion int, pidServicio int,pidElemento int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarservicioselementos`(poperacion int,
+pServicios_identificador int, pElementos_identificador int)
 BEGIN
-Declare vnumeroregistros int;
-   
-   if (poperacion = 0) then
-		   
-			 Insert Into 
-			  servicioselementos
-			  values(pidServicio,pidElemento);
 
-    else
-        Delete from servicioselementos 
-        where idServicio = pidServicio and idElemento = pidElemento;
-	end if;   
+declare vprecio int;
+declare vcosto int;
+declare vporcentaje int;
+
+if(poperacion = 0)then 
+
+insert into servicioselementos values(pServicios_identificador,pElementos_identificador);
+
+select sum(e.costo) into vcosto
+from ServiciosElementos se, elementos e
+where se.idservicio = pServicios_identificador and se.idelemento = e.idelemento;
+
+select porcentajeGanancia into vporcentaje
+from servicios
+where idservicio = pServicios_identificador;
+
+set vprecio = vcosto + (vcosto*vporcentaje)/100;
+
+update servicios set precio = vprecio, costoServicio = vcosto
+where idServicio = pServicios_identificador;
+
+else if (poperacion = 1)then
+
+delete from servicioselementos where idElemento = pElementos_identificador;
+
+select sum(e.costo) into vcosto
+from ServiciosElementos se, elementos e
+where se.idservicio = pServicios_identificador and se.idelemento = e.idelemento;
+
+select porcentajeGanancia into vporcentaje
+from servicios
+where idservicio = pServicios_identificador;
+
+set vprecio = vcosto + (vcosto*vporcentaje)/100;
+
+update servicios set precio = vprecio, costoServicio = vcosto
+where idServicio = pServicios_identificador;
+
+end if;
+
+end if; 
+
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -904,7 +1032,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarusuarios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -913,7 +1041,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarusuarios`(poperacion int, pcontraseña varbinary(16), pidCliente int(11), 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarusuarios`(poperacion int, pcontrasena varbinary(16), pidCliente int(11), 
 ptipoIdentificacionCliente enum('Cedula','tarjeta de identidad','cedula de extranjeria'), pidEmpleado int(11) 
 ,ptipoIdentificacionEmpleado enum('Cedula','tarjeta de identidad','cedula de extranjeria'), ptipo enum('C','P','S','A','G'))
 BEGIN
@@ -929,9 +1057,9 @@ Declare vnumeroregistros int;
 		  if (vnumeroregistros = 0) then
 			 Insert Into 
 			  usuarios
-			  values(pcontraseña,pidCliente,ptipoIdentificacionCliente,pidEmpleado,ptipoIdentificacionEmpleado,ptipo);
+			  values(pcontrasena,pidCliente,ptipoIdentificacionCliente,pidEmpleado,ptipoIdentificacionEmpleado,ptipo);
 		  else   
-			 update usuarios set contraseña = pcontraseña, idcliente = pidCliente,
+			 update usuarios set contrasena = pcontrasena, idcliente = pidCliente,
              tipoIdentificacionCliente = ptipoIdentificacionCliente,idEmpleado = pidEmpleado,
              tipoIdentificacionEmpleado = ptipoIdentificacionEmpleado, tipo = ptipo 
 			 where (idcliente = pidCliente and tipoIdentificacionCliente = ptipoIdentificacionCliente) and
@@ -1035,4 +1163,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-23 13:29:04
+-- Dump completed on 2022-11-24  9:54:13
