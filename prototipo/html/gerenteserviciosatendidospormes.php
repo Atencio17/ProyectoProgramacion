@@ -30,18 +30,28 @@
             <h4 style="text-align: center; ">SERVICIOS ATENDIDOS POR MES</h4>
 
             <div style="text-align: center; display: flex; justify-content:center ; margin-top: 20px;">
-                <table>
-                    <tr>
-                        <th>Tipo de servicio</th>
-                        <th>Atentidos</th>
-                        <th>Fecha</th>
-                    </tr>
-                    <tr>
-                        <td>xxxxx</td>
-                        <td>xxxxxx</td>
-                        <td>xxxxxx</td>
-                    </tr>
-                </table>
+            <table style="border: 1px solid #000;">
+                            <tr>
+                                <th style='border: 1px solid #000; vertical-align: center; text-align: center; padding:5px;'>Nombre del servicio</th>
+                                <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Cantidad de ventas</th>
+                                <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Fecha</th>
+                            </tr>
+
+                            <?php
+                                include '../controladores/controladorcategoria.php';
+                                $controladorCliente = new ControladorCategorias();
+                                $resultado = $controladorCliente->listarDatos();
+                                while ($fila = $resultado->fetch_assoc()) {
+                                    echo "<tr border: 1px solid #000;>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['idCategoria']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Categoria']."</td>";
+                                    echo "<td border: 1px solid #000;> <br>
+                                    </td>";
+                                    echo "</tr>";
+                                }
+                            ?>
+
+                        </table>
             </div>
 
 

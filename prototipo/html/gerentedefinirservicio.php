@@ -31,7 +31,7 @@
                 <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
                 <a href="gerenteregistroempleados.php"><button type="button " class="botones ">Registrar empleados</button></a><br>
                 <a href="gerentereportedeganancias.html"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
-                <a href="gerenteserviciosatendidospormes.html"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
+                <a href="gerenteserviciosatendidospormes.php"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
             </div>
         </aside>
 
