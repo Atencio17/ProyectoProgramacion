@@ -123,9 +123,6 @@
                         <label for="">Apellidos</label> <br>
                         <input type="text" name="apellido"> <br><br>
 
-                        <label for="">Numero de teléfono</label> <br>
-                        <input type="number" name="celular"> <br><br>
-
                         <label for="">Contraseña</label><br>
                         <input type="password" name="password"> <br><br>
 

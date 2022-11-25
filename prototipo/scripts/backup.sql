@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: proyecto
 -- ------------------------------------------------------
--- Server version	10.4.25-MariaDB
+-- Server version	10.4.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'abc'),(55,'a'),(123,'dentist'),(777,'kinesico'),(10003,'spa'),(100003,'daniel');
+INSERT INTO `categorias` VALUES (1,'masajes'),(2,'quiropractico'),(3,'sobos');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `citas` (
   KEY `fk_citas_empleados1_idx` (`idEmpleado`,`empleados_tipoIdentificacion`),
   CONSTRAINT `fk_citas_clientes1` FOREIGN KEY (`idCliente`, `clientes_tipoIdentificacion`) REFERENCES `clientes` (`idCliente`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_citas_empleados1` FOREIGN KEY (`idEmpleado`, `empleados_tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,6 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
-INSERT INTO `citas` VALUES (2,'2022-11-24 14:03:16',123,'Cedula',NULL,NULL),(41,'2022-11-17 14:34:00',123,'Cedula',NULL,NULL),(43,'2022-11-10 14:43:00',123,'Cedula',NULL,NULL),(44,'2022-11-09 15:03:00',123,'Cedula',NULL,NULL),(61,'2022-11-14 18:26:00',123,'Cedula',9,'Cedula'),(62,'2022-11-14 18:26:00',123,'Cedula',9,'Cedula'),(63,'2022-11-08 18:29:00',123,'Cedula',9,'Cedula');
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +101,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (123,'Cedula','andres','atencio','2003-07-10','333','hola@gmail.com','calle falsa','si','2003-02-10','1111','adios@gmail.com');
+INSERT INTO `clientes` VALUES (1103858176,'Cedula','Isaac ','Gonzalez','2004-02-05','3005719154','isaac.gonzalezs@cecar.edu.co','calleisaac123','si','1998-07-15','330054512','gina@gmail.com'),(1103858555,'Cedula','andres','aaaaaaaaaa','1998-02-10','3005719154','djgg8660@gmail.com','aaaaaaaaa',NULL,'2022-11-09','5555555555555555','gina@gmail.com');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +127,7 @@ CREATE TABLE `elementos` (
 
 LOCK TABLES `elementos` WRITE;
 /*!40000 ALTER TABLE `elementos` DISABLE KEYS */;
-INSERT INTO `elementos` VALUES (10003,'aceite',200,'aceite para masajes'),(100003,'locion',900,'locion sin mas');
+INSERT INTO `elementos` VALUES (1,'aceite',5000,'se usa para masajes'),(2,'agua',4000,'para tomar\r\n'),(3,'silla',20000,'para sentarse'),(4,'cama enfermeria',60000,'para acostarse'),(5,'boleadora',7000,'para masajes');
 /*!40000 ALTER TABLE `elementos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -192,7 +191,7 @@ CREATE TABLE `empleados` (
 
 LOCK TABLES `empleados` WRITE;
 /*!40000 ALTER TABLE `empleados` DISABLE KEYS */;
-INSERT INTO `empleados` VALUES (9,'Cedula','A','Z'),(2147483647,'Cedula','a','v');
+INSERT INTO `empleados` VALUES (1,'Cedula','Carlos','Gonzalez'),(2,'Cedula','frank','perez'),(3,'Cedula','joana','Martinez'),(4,'Cedula','pepe','gonzalez');
 /*!40000 ALTER TABLE `empleados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +210,7 @@ CREATE TABLE `estudios` (
   PRIMARY KEY (`idEstudio`),
   KEY `fk_estudios_empleados1_idx` (`idEmpleado`,`tipoIdentificacion`),
   CONSTRAINT `fk_estudios_empleados1` FOREIGN KEY (`idEmpleado`, `tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +219,7 @@ CREATE TABLE `estudios` (
 
 LOCK TABLES `estudios` WRITE;
 /*!40000 ALTER TABLE `estudios` DISABLE KEYS */;
-INSERT INTO `estudios` VALUES (1,'si',123,'Cedula'),(2,'no',123,'Cedula'),(3,'universitario',123124455,'Cedula'),(4,'bachiller',123124455,'Cedula'),(5,'primaria',123124455,'Cedula'),(6,'primaria',123124455,'Cedula'),(7,'araujo',2147483647,'Cedula'),(8,'uni',2147483647,'Cedula'),(9,'araujo',2147483647,'Cedula'),(10,'uni',2147483647,'Cedula'),(11,'araujo',2147483647,'Cedula'),(12,'uni',2147483647,'Cedula');
+INSERT INTO `estudios` VALUES (13,'secretaria',3,'Cedula'),(14,'profesional',2,'Cedula'),(15,'masajes',2,'Cedula'),(16,'administrador de empresas',4,'Cedula');
 /*!40000 ALTER TABLE `estudios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +238,7 @@ CREATE TABLE `experiencias` (
   PRIMARY KEY (`idExperiencia`),
   KEY `fk_experiencia_empleados1_idx` (`idEmpleado`,`tipoIdentificacion`),
   CONSTRAINT `fk_experiencia_empleados1` FOREIGN KEY (`idEmpleado`, `tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +247,7 @@ CREATE TABLE `experiencias` (
 
 LOCK TABLES `experiencias` WRITE;
 /*!40000 ALTER TABLE `experiencias` DISABLE KEYS */;
-INSERT INTO `experiencias` VALUES (1,'no',123,'Cedula'),(2,'si',123,'Cedula'),(3,'google',123124455,'Cedula'),(4,'google',123124455,'Cedula'),(5,'google',123124455,'Cedula'),(6,'amazon',123124455,'Cedula'),(7,'yutu',123124455,'Cedula'),(8,'amazon',123124455,'Cedula'),(9,'amazon',123124455,'Cedula'),(10,'ninguna',2147483647,'Cedula'),(11,'google',2147483647,'Cedula'),(12,'ninguna',2147483647,'Cedula'),(13,'google',2147483647,'Cedula'),(14,'ninguna',2147483647,'Cedula'),(15,'google',2147483647,'Cedula');
+INSERT INTO `experiencias` VALUES (16,'secretaria',3,'Cedula'),(17,'profesional',2,'Cedula'),(18,'masajes',2,'Cedula'),(19,'administrador de empresas',4,'Cedula');
 /*!40000 ALTER TABLE `experiencias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,7 +295,7 @@ CREATE TABLE `historiasclinicas` (
   PRIMARY KEY (`idHistoriaClinica`),
   KEY `fk_historiasclinicas_clientes1_idx` (`idCliente`,`tipoIdentificacion`),
   CONSTRAINT `fk_historiasclinicas_clientes1` FOREIGN KEY (`idCliente`, `tipoIdentificacion`) REFERENCES `clientes` (`idCliente`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +304,7 @@ CREATE TABLE `historiasclinicas` (
 
 LOCK TABLES `historiasclinicas` WRITE;
 /*!40000 ALTER TABLE `historiasclinicas` DISABLE KEYS */;
-INSERT INTO `historiasclinicas` VALUES (2,65,99,80,'Sapomrk','Sintomas:\r\n-Sapo\r\n-Mrk',5,7,NULL,123,'Cedula');
+INSERT INTO `historiasclinicas` VALUES (1,85,76,80,'aaaaaaaa','no se',4,NULL,'Negativa',1,'Cedula');
 /*!40000 ALTER TABLE `historiasclinicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -332,7 +331,7 @@ CREATE TABLE `historiasclinicasservicios` (
 
 LOCK TABLES `historiasclinicasservicios` WRITE;
 /*!40000 ALTER TABLE `historiasclinicasservicios` DISABLE KEYS */;
-INSERT INTO `historiasclinicasservicios` VALUES (2,100003),(2,1);
+INSERT INTO `historiasclinicasservicios` VALUES (1,1),(1,2);
 /*!40000 ALTER TABLE `historiasclinicasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +366,7 @@ CREATE TABLE `servicios` (
 
 LOCK TABLES `servicios` WRITE;
 /*!40000 ALTER TABLE `servicios` DISABLE KEYS */;
-INSERT INTO `servicios` VALUES (1,'prueba',NULL,'si',NULL,NULL,NULL,NULL,99,1),(100003,'Masajes',NULL,'Masajes con finales felices',120,90,80,NULL,25,1);
+INSERT INTO `servicios` VALUES (1,'dolores',11000,'Se hacen masajes para dolores',73,82,60,14300,30,1),(2,'traquear',NULL,'Se hacen masajes para dolores',NULL,NULL,NULL,NULL,25,2),(3,'yoquese',NULL,'tampocose',NULL,NULL,NULL,NULL,80,3);
 /*!40000 ALTER TABLE `servicios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -433,7 +432,7 @@ CREATE TABLE `servicioselementos` (
 
 LOCK TABLES `servicioselementos` WRITE;
 /*!40000 ALTER TABLE `servicioselementos` DISABLE KEYS */;
-INSERT INTO `servicioselementos` VALUES (100003,100003);
+INSERT INTO `servicioselementos` VALUES (1,2),(1,5);
 /*!40000 ALTER TABLE `servicioselementos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,7 +463,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S'),('a',NULL,NULL,2147483647,'Cedula','S'),('hola',123,'Cedula',NULL,NULL,'C'),('hola',123,'Cedula',NULL,NULL,'C'),('si',NULL,NULL,2147483647,'Cedula','G'),('123',NULL,NULL,9,'Cedula','S'),('123',NULL,NULL,9,'Cedula','S'),('456',NULL,NULL,9,'Cedula','A'),('789',NULL,NULL,9,'Cedula','P'),('1',NULL,NULL,9,'Cedula','G');
+INSERT INTO `usuarios` VALUES ('gerente123',NULL,NULL,1,'Cedula','G'),('isaac123',1103858176,'Cedula',NULL,NULL,'C'),('isaac123',1103858176,'Cedula',NULL,NULL,'C'),('secretaria123',NULL,NULL,3,'Cedula','S'),('profesional123',NULL,NULL,2,'Cedula','P'),('administrador123',NULL,NULL,4,'Cedula','A'),('holahola',NULL,NULL,1,'Cedula',''),('holahola',NULL,NULL,2,'Cedula','P'),('holahola',1103858555,'Cedula',NULL,NULL,'C');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,6 +492,7 @@ CREATE TABLE `ventadetalle` (
 
 LOCK TABLES `ventadetalle` WRITE;
 /*!40000 ALTER TABLE `ventadetalle` DISABLE KEYS */;
+INSERT INTO `ventadetalle` VALUES (8000,1,2),(8000,2,1);
 /*!40000 ALTER TABLE `ventadetalle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -521,7 +521,7 @@ CREATE TABLE `ventaencabezado` (
 
 LOCK TABLES `ventaencabezado` WRITE;
 /*!40000 ALTER TABLE `ventaencabezado` DISABLE KEYS */;
-INSERT INTO `ventaencabezado` VALUES (1,'2022-11-24',300,123,'Cedula'),(2,'2022-04-14',20,123,'Cedula');
+INSERT INTO `ventaencabezado` VALUES (1,'2022-11-24',8000,1,'Cedula'),(2,'2022-11-25',7000,1103858555,'Cedula');
 /*!40000 ALTER TABLE `ventaencabezado` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -555,8 +555,6 @@ DELIMITER ;
 --
 -- Dumping routines for database 'proyecto'
 --
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarcategorias` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -564,6 +562,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarcategorias`(poperacion int, pidcategoria int, pcategoria varchar(45))
 BEGIN
@@ -593,8 +593,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarcitas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -602,6 +600,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarcitas`(poperacion int, pidcitas int, pcita datetime, pidcliente int, 
 ptipoidentificacioncliente ENUM('Cedula', 'tarjeta de identidad', 'cedula de extranjeria'), pidempleado int,
@@ -634,8 +634,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarclientes` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -643,6 +641,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarclientes`(poperacion int,pidCliente int(11),
 ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'),pnombre varchar(45)
@@ -682,8 +682,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarelementos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -691,6 +689,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarelementos`(poperacion int, pidelemento int, pnombre varchar(45), pcosto int, pdescripcion longtext)
 BEGIN
@@ -720,8 +720,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarempleados` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -729,6 +727,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarempleados`(poperacion int,pidempleado int(11),
 ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'),pnombre varchar(45)
@@ -760,8 +760,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarestudios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -769,6 +767,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarestudios`(poperacion int, pidestudio int, pestudio longtext, pidempleado int, 
 										ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
@@ -799,8 +799,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarexperiencias` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -808,6 +806,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarexperiencias`(poperacion int, pidexperiencia int, pexperiencia longtext, pidempleado int, 
 										ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
@@ -838,8 +838,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarhistoriasclinicas` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -847,6 +845,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarhistoriasclinicas`(poperacion int,pidHistoriaClinica int,
 ppresionsistolica int(11) ,ppresiondiastolica int(11) ,ppeso int(11) ,pderivacion longtext ,pdiagnostico longtext ,
@@ -887,8 +887,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarhistoriasclinicasservicios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -896,6 +894,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarhistoriasclinicasservicios`(poperacion int,pidHistoriaClinica int,pidServicio int)
 BEGIN
@@ -925,8 +925,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarservicios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -934,6 +932,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarservicios`(poperacion int, pidServicio int,pnombreServicio varchar(45),pcostoServicio int(11) 
 ,pdescripcionServicio longtext,ppresionsistolica int(11),ppresiondiastolica int,ppeso int,pprecio int
@@ -969,8 +969,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarservicioselementos` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -978,6 +976,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarservicioselementos`(poperacion int,
 pServicios_identificador int, pElementos_identificador int)
@@ -1031,8 +1031,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarusuarios` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1040,6 +1038,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarusuarios`(poperacion int, pcontrasena varbinary(16), pidCliente int(11), 
 ptipoIdentificacionCliente enum('Cedula','tarjeta de identidad','cedula de extranjeria'), pidEmpleado int(11) 
@@ -1076,8 +1076,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarventadetalle` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1085,6 +1083,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarventadetalle`(poperacion int,pprecio int, pidventaEncabezado int, pidservicio int)
 BEGIN
@@ -1114,8 +1114,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `gestionarventaencabezado` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -1123,6 +1121,8 @@ DELIMITER ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
 /*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `gestionarventaencabezado`(poperacion int, pidventaEncabezado int, pfecha date, ptotal int, pidcliente int,
 ptipoIdentificacion enum('Cedula','tarjeta de identidad','cedula de extranjeria'))
@@ -1163,4 +1163,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-24 19:35:11
+-- Dump completed on 2022-11-25 12:55:27

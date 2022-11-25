@@ -56,9 +56,6 @@
                         </table>
             </div>
 
-
-
-
     </div>
 
     </section>
@@ -80,7 +77,6 @@
                         <a href=" "><img src="../recursos/images/telefono.png " alt=" "></a><br> direccioncorreo@example.com
                         <a href=" "><img src="../recursos/images/gmail.png " alt=" "></a><br>
                     </div>
-
 
                 </ul>
             </div>
