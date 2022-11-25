@@ -15,7 +15,7 @@
     <h1 style="text-align: center;">FACTURA</h1>
     <div style="justify-content: space-between; display: flex;">
         <label for="">Número de factura</label>
-        <label for="">Fecha de la factura: xx/xx/xxxx</label>
+        <label for="">Fecha de la factura: <?php echo $_POST['fecha']; ?></label>
     </div>
     <br>
     <br>
@@ -23,10 +23,10 @@
     <br>
     <div style="justify-content: space-between; display: flex;">
         <div>
-            <label for="">Cliente: xxxxxxx</label><br>
-            <label for="">Identificación: 111111111111</label><br>
-            <label for="">Dirección: Calle 45 A N89 D 23</label><br>
-            <label for="">Correo electrónico: example@gmail.com</label><br>
+            <label for="">Cliente: <?php echo $_POST['nombre']; ?></label><br>
+            <label for="">Identificación: <?php echo $_POST['idcliente']; ?></label><br>
+            <label for="">Dirección: <?php echo $_POST['direccion']; ?></label><br>
+            <label for="">Correo electrónico: <?php echo $_POST['correo']; ?></label><br>
         </div>
         <div>
             <H1 style="margin-right: 70px;">CECAR</H1>

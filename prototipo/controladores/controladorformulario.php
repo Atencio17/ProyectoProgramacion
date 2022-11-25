@@ -511,6 +511,30 @@ if ($controlador == "categoria") {
       echo "<input type='number' name='cliente' value=".$id.">";
     }
     echo "<input type='submit' id='enviar'>";
+    echo "</form>";
+    echo "<script>
+            var elemento = document.getElementById('enviar');
+            elemento.click();
+          </script>";
+    echo "</form>";
+  }
+}elseif ($controlador == "factura") {
+  if ($operacion == "facturar") {
+
+    require_once "../modelos/ventaencabezadomodelo.php";
+    require_once "controladorventaencabezado.php";
+
+    $controladorGenerico = new ControladorVentaEncabezado();
+
+    echo "<form action='../html/secretariafactura.php' method='post'>";
+    echo "<input type='number' name='idcliente' value=".echo $_POST['idcliente'].">";
+    echo "<input type='number' name='nombre' value=".echo $_POST['nombre'].">";
+    echo "<input type='number' name='apellido' value=".echo $_POST['apellido'].">";
+    echo "<input type='number' name='direccion' value=".echo $_POST['direccion'].">";
+    echo "<input type='number' name='correo' value=".echo $_POST['correo'].">";
+    echo "<input type='number' name='fecha' value=".echo $_POST['fecha'].">";
+    echo "<input type='submit' id='enviar'>";
+    echo "</form>";
     echo "<script>
             var elemento = document.getElementById('enviar');
             elemento.click();

@@ -22,34 +22,33 @@
 
     <div style="text-align: center; justify-content:center ;">
         <h4 style="margin-top: 20px;">DATOS DE LA FACTURA</h4><br><br>
-        <div>
-            <label>Número de identificación</label><br>
-            <input type="text"> <br><br>
+        <form action="../controladores/controladorformulario.php" method="post">
+            <div>
+                <label>Número de identificación</label><br>
+                <input type="text" name="idcliente"> <br><br>
+    
+                <label for="">Nombre cliente</label><br>
+                <input type="text" name="nombre"><br><br>
 
-            <label for="">Nombre cliente</label><br>
-            <input type="text"><br><br>
+                <label for="">Apellido cliente</label><br>
+                <input type="text" name="apellido"><br><br>
 
-            <label for="">Dirección cliente</label><br>
-            <input type="text"><br><br>
-        </div>
-        <div">
-            <label for="">fecha</label><br>
-            <input type="datetime-local"><br><br>
+                <label for="">Dirección cliente</label><br>
+                <input type="text" name="direccion"><br><br>
+            </div>
+            <div>
+                <label for="">Correo electronico cliente</label><br>
+                <input type="text" name="correo"><br><br>
 
-            <label for="">Apellido cliente</label><br>
-            <input type="text"><br><br>
-
-            <label for="">Correo electronico cliente</label><br>
-            <input type="text"><br><br>
+                <label for="">fecha</label><br>
+                <input type="date" name="fecha"><br><br>
+                <input type="text" name="controlador" value="factura" hidden>
+                <input type="submit" name="operacion" value="facturar" class="botonsection"><br><br><br>
+        </form>
 
         </div>
     </div>
-
-
-    <div style="display: flex; align-items:center; flex-direction: column;">
-        <a href="secretariafactura.html"><button type="button " class="btn btn-info botonTamaño " style="margin-top: 10px; margin-bottom: 20px;" onclick="">Facturar</button></a>
-
-    </div>
+    
     <footer>
         <div style=" display: flex; justify-content: space-around; ">
             <div>

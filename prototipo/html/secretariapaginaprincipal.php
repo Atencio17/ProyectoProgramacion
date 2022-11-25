@@ -28,7 +28,7 @@
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
                 <a href="secretariaregistro.php"><button type="button " class="botones ">Registro cliente</button></a><br>
-                <a href="secretariafacturacion.html"><button type="button " class="botones ">Facturación</button></a>
+                <a href="secretariafacturacion.php"><button type="button " class="botones ">Facturación</button></a>
             </div>
         </aside>
 
