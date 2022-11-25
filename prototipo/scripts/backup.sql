@@ -58,7 +58,7 @@ CREATE TABLE `citas` (
   KEY `fk_citas_empleados1_idx` (`idEmpleado`,`empleados_tipoIdentificacion`),
   CONSTRAINT `fk_citas_clientes1` FOREIGN KEY (`idCliente`, `clientes_tipoIdentificacion`) REFERENCES `clientes` (`idCliente`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_citas_empleados1` FOREIGN KEY (`idEmpleado`, `empleados_tipoIdentificacion`) REFERENCES `empleados` (`idEmpleado`, `tipoIdentificacion`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +67,7 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
+INSERT INTO `citas` VALUES (2,'2022-11-24 14:03:16',123,'Cedula',NULL,NULL),(41,'2022-11-17 14:34:00',123,'Cedula',NULL,NULL),(43,'2022-11-10 14:43:00',123,'Cedula',NULL,NULL),(44,'2022-11-09 15:03:00',123,'Cedula',NULL,NULL),(61,'2022-11-14 18:26:00',123,'Cedula',9,'Cedula'),(62,'2022-11-14 18:26:00',123,'Cedula',9,'Cedula'),(63,'2022-11-08 18:29:00',123,'Cedula',9,'Cedula');
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +305,7 @@ CREATE TABLE `historiasclinicas` (
 
 LOCK TABLES `historiasclinicas` WRITE;
 /*!40000 ALTER TABLE `historiasclinicas` DISABLE KEYS */;
-INSERT INTO `historiasclinicas` VALUES (2,122,60,55,'ningunas','problemas comunes',NULL,10,'Negativa',123,'Cedula');
+INSERT INTO `historiasclinicas` VALUES (2,65,99,80,'Sapomrk','Sintomas:\r\n-Sapo\r\n-Mrk',5,7,NULL,123,'Cedula');
 /*!40000 ALTER TABLE `historiasclinicas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,7 +319,6 @@ DROP TABLE IF EXISTS `historiasclinicasservicios`;
 CREATE TABLE `historiasclinicasservicios` (
   `idHistoriaClinica` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL,
-  PRIMARY KEY (`idHistoriaClinica`,`idServicio`),
   KEY `fk_historiasclinicas_has_servicios_servicios1_idx` (`idServicio`),
   KEY `fk_historiasclinicas_has_servicios_historiasclinicas1_idx` (`idHistoriaClinica`),
   CONSTRAINT `fk_historiasclinicas_has_servicios_historiasclinicas1` FOREIGN KEY (`idHistoriaClinica`) REFERENCES `historiasclinicas` (`idHistoriaClinica`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -332,7 +332,7 @@ CREATE TABLE `historiasclinicasservicios` (
 
 LOCK TABLES `historiasclinicasservicios` WRITE;
 /*!40000 ALTER TABLE `historiasclinicasservicios` DISABLE KEYS */;
-INSERT INTO `historiasclinicasservicios` VALUES (2,100003);
+INSERT INTO `historiasclinicasservicios` VALUES (2,100003),(2,1);
 /*!40000 ALTER TABLE `historiasclinicasservicios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1163,4 +1163,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-24  9:54:13
+-- Dump completed on 2022-11-24 19:35:11
