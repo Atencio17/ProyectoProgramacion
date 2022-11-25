@@ -26,6 +26,10 @@ session_start();
         <h1>CECAR</h1>
     </header>
 
+    <nav>
+        <a href="oficinavirtual.php "><img src="../recursos/images/cecarlogo.png" alt="" style="height: 35px;"></a>
+    </nav>
+
     <div class="row">
 
         <div class="col">
@@ -34,12 +38,12 @@ session_start();
                     <form method="post" action="../controladores/controladorformulario.php">
                         <div class="mb-3 ">
                             <label for="exampleInputEmail1" class="form-label">Identificacion</label>
-                            <input type="text" class="form-control " name="usuario" aria-describedby="emailHelp " placeholder="ejemplo@mail.com">
+                            <input type="text" class="form-control " name="usuario" aria-describedby="emailHelp " required>
 
                         </div>
                         <div class="mb-3 ">
                             <label for="exampleInputPassword1 " class="form-label ">Contraseña</label>
-                            <input type="password" class="form-control " name="password" placeholder="Contraseña">
+                            <input type="password" class="form-control " name="password" placeholder="Contraseña" required>
                         </div>
                         <input type="text" name="controlador" value="usuarios" hidden>
                         <input type="text" name="operacion" value="entrar" hidden>

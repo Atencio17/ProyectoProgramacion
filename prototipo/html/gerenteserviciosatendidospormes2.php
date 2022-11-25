@@ -28,7 +28,7 @@
 
         <section>
             <h4 style="text-align: center; ">SERVICIOS ATENDIDOS POR MES</h4>
-            <form action="gerenteserviciosatendidospormes2.php" method="post">
+            <form action="gerenteserviciosatendidospormes.php" method="post">
                 <select name="mes" id="">
                     <option value="January">Enero</option>
                     <option value="February">Febrero</option>
@@ -52,6 +52,20 @@
                                 <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Cantidad de ventas</th>
                                 <th style='border: 1px solid #000; vertical-align: center; text-align: center;'>Fecha</th>
                             </tr>
+
+                            <?php
+                                include_once('../controladores/controladorservicio.php');
+                                $controladorGenerico = new ControladorServicios();
+                                $mes = $_POST['mes'];
+                                $resultado = $controladorGenerico->reporteMes($mes);
+                                while ($fila = $resultado->fetch_assoc()){
+                                    echo "<tr border: 1px solid #000;>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Nombre']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Cantidad']."</td>";
+                                    echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['fecha']."</td>";
+                                    echo "<td border: 1px solid #000;> <br>";
+                                }
+                            ?>
 
                         </table>
             </div>

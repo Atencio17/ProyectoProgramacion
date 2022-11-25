@@ -147,9 +147,9 @@ if ($controlador == "categoria") {
     $mail->Port       = 587;
     $mail->SMTPDebug  = 1;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'parcialprogramacion123@outlook.es';
-    $mail->Password   = 'parcialganado123';
-    $mail->SetFrom('atenciomunive@hotmail.com', "no-reply");
+    $mail->Username   = 'atenciomunive@hotmail.com';
+    $mail->Password   = 'andres123lol';
+    $mail->SetFrom("atenciomunive@hotmail.com", "no-reply");
     $mail->AddReplyTo('no-reply@mycomp.com','no-reply');
     $mail->Subject    = 'Codigo verificacion';
     $mail->MsgHTML($body);
@@ -174,7 +174,7 @@ if ($controlador == "categoria") {
   } else {
     echo "alert('La contraseña no es la misma')";
     echo "<script>
-    window.location.href = '../html/secretariaregistro.html';
+    window.location.href = '../html/secretariaregistro.php';
   </script>";
   }
   
@@ -196,13 +196,13 @@ if ($controlador == "categoria") {
   if ($codigoUno == $codigoCelular && $codigoDos == $codigoCorreo) {
     echo "alert('Cliente registrado');";
     echo "<script>
-    window.location.href = '../html/secretariapaginaprincipal.html';
+    window.location.href = '../html/secretariapaginaprincipal.php';
   </script>";
   }else {
     $controladorGenerico->eliminar($objeto);
     echo "alert('Codigo erroneo, por favor registrese de nuevo');";
     echo "<script>
-    window.location.href = '../html/secretariapaginaprincipal.html';
+    window.location.href = '../html/secretariapaginaprincipal.php';
   </script>";
   }
 }elseif ($controlador == "empleado") {
@@ -257,7 +257,7 @@ if ($controlador == "categoria") {
     if ($password != $passwordconfirm) {
       header('location:../html/gerenteregistroempleados.php');
     }else{
-      header('location:../html/gerentepaginaprincipal.html');
+      header('location:../html/gerentepaginaprincipal.php');
     }
 
   }
@@ -519,26 +519,23 @@ if ($controlador == "categoria") {
     echo "</form>";
   }
 }elseif ($controlador == "factura") {
-  // if ($operacion == "facturar") {
-
-  //   require_once "../modelos/ventaencabezadomodelo.php";
-  //   require_once "controladorventaencabezado.php";
-
-  //   $controladorGenerico = new ControladorVentaEncabezado();
-
-  //   echo "<form action='../html/secretariafactura.php' method='post'>";
-  //   echo "<input type='number' name='idcliente' value=".echo $_POST['idcliente'].">";
-  //   echo "<input type='number' name='nombre' value=".echo $_POST['nombre'].">";
-  //   echo "<input type='number' name='apellido' value=".echo $_POST['apellido'].">";
-  //   echo "<input type='number' name='direccion' value=".echo $_POST['direccion'].">";
-  //   echo "<input type='number' name='correo' value=".echo $_POST['correo'].">";
-  //   echo "<input type='number' name='fecha' value=".echo $_POST['fecha'].">";
-  //   echo "<input type='submit' id='enviar'>";
-  //   echo "</form>";
-  //   echo "<script>
-  //           var elemento = document.getElementById('enviar');
-  //           elemento.click();
-  //         </script>";
-  //   echo "</form>";
-  // }
+   // if ($operacion == "facturar") {
+   //   require_once "../modelos/ventaencabezadomodelo.php";
+   //   require_once "controladorventaencabezado.php";
+   //   $controladorGenerico = new ControladorVentaEncabezado();
+   //   echo "<form action='../html/secretariafactura.php' method='post'>";
+   //   echo "<input type='number' name='idcliente' value=".echo $_POST['idcliente'].">";
+   //   echo "<input type='number' name='nombre' value=".echo $_POST['nombre'].">";
+   //   echo "<input type='number' name='apellido' value=".echo $_POST['apellido'].">";
+   //   echo "<input type='number' name='direccion' value=".echo $_POST['direccion'].">";
+   //   echo "<input type='number' name='correo' value=".echo $_POST['correo'].">";
+   //   echo "<input type='number' name='fecha' value=".echo $_POST['fecha'].">";
+   //   echo "<input type='submit' id='enviar'>";
+   //   echo "</form>";
+   //   echo "<script>
+   //           var elemento = document.getElementById('enviar');
+   //           elemento.click();
+   //         </script>";
+   //   echo "</form>";
+   // } 
 }

@@ -79,10 +79,10 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="gerentereportedeventas.html"><button type="button " class="botones ">Reporte de ventas</button></a><br>
-                <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
+                <a href="gerentereportedeventas.php"><button type="button " class="botones ">Reporte de ventas</button></a><br>
+                <a href="gerenteimportegananciasporservicio.php"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
                 <a href="gerentedefinirservicio.php"><button type="button " class="botones ">Definir servicios</button></a><br>
-                <a href="gerentereportedeganancias.html"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
+                <a href="gerentereportedeganancias.php"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
                 <a href="gerenteserviciosatendidospormes.php"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
             </div>
         </aside>
@@ -127,10 +127,10 @@
                         <input type="number" name="celular"> <br><br>
 
                         <label for="">Contraseña</label><br>
-                        <input type="text" name="password"> <br><br>
+                        <input type="password" name="password"> <br><br>
 
                         <label for="">Confirmar Contraseña</label><br>
-                        <input type="text" name="passwordconfirm"><br><br>
+                        <input type="password" name="passwordconfirm"><br><br>
 
                         <input type="text" name="controlador" value="empleado", hidden>
 

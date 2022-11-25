@@ -1,7 +1,7 @@
 <?php
 
-$servidor = "127.0.0.1";
-$usuario = "root";
+$servidor = "192.168.43.220";
+$usuario = "tiers3";
 $contraseña = "";
 $basededatos = "proyecto";
 $puerto = "3306";

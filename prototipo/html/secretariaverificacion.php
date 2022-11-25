@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-3 ">
                             <label for="exampleInputPassword1" class="form-label">Codigo correo electronico</label>
-                            <input type="password" class="form-control " name="codigoDos">
+                            <input type="number" class="form-control " name="codigoDos">
                         </div>
 
 

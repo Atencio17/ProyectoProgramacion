@@ -27,10 +27,10 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="gerentereportedeventas.html"><button type="button " class="botones ">Reporte de ventas</button></a><br>
-                <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
+                <a href="gerentereportedeventas.php"><button type="button " class="botones ">Reporte de ventas</button></a><br>
+                <a href="gerenteimportegananciasporservicio.php"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
                 <a href="gerenteregistroempleados.php"><button type="button " class="botones ">Registrar empleados</button></a><br>
-                <a href="gerentereportedeganancias.html"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
+                <a href="gerentereportedeganancias.php"><button type="button " class="botones ">Reporte de ganancias</button></a><br>
                 <a href="gerenteserviciosatendidospormes.php"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
             </div>
         </aside>

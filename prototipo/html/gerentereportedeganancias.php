@@ -27,8 +27,8 @@
         <aside>
             <div class="divaside ">
                 <h4>Nombre usuario</h4>
-                <a href="gerentereportedeventas.html"><button type="button " class="botones ">Reporte de ventas</button></a><br>
-                <a href="gerenteimportegananciasporservicio.html"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
+                <a href="gerentereportedeventas.php"><button type="button " class="botones ">Reporte de ventas</button></a><br>
+                <a href="gerenteimportegananciasporservicio.php"><button type="button " class="botones ">Importe de ganancias por servicio</button></a><br>
                 <a href="gerenteregistroempleados.php"><button type="button " class="botones ">Registrar empleados</button></a><br>
                 <a href="gerentedefinirservicio.php"><button type="button " class="botones ">Definir servicios</button></a><br>
                 <a href="gerenteserviciosatendidospormes.php"><button type="button " class="botones ">Servicios atendidos por mes</button></a>
@@ -37,63 +37,28 @@
 
         <section>
             <h4 style="text-align: center; ">Reporte de ganancias</h4>
-            <div>
-                <div>
-                    <label for="">Desde</label>
-                    <input type="date" name="" id="">
-                </div>
-                <div>
-                    <label for="">Hasta</label>
-                    <input type="date" name="" id=""> <br>
-                    <button type="button " class="botonsection ">Generar</button>
-                </div>
-            </div>
-            <table style=" width: 100%; justify-content: space-around;">
+            <table>
                 <tr>
-                    <th style="text-align:center ; justify-content: center;"></th>
+                    <th>Servicio</th>
+                    <th>Cantidad de Ventas</th>
+                    <th>Costo Total</th>
+                    <th>Venta Total</th>
+                    <th>Ganancias</th>
                 </tr>
-                <tr>
-
-                    <tr id="fila0">
-                        <th>Tipo de servicio</th>
-                        <th>Cantidad de ventas</th>
-                        <th>Costo total</th>
-                        <th>Venta total</th>
-                        <th>Ganancias</th>
-                    </tr>
-                    <tr id="fila1">
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                    </tr>
-                    <tr id="fila2">
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                    </tr>
-                    <tr id="fila3">
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-
-                    </tr>
-                    <tr id="fila4">
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                        <td>XXXXXXXXX</td>
-                    </tr>
-                </tr>
-
-                </tr>
-
+                <?php 
+                    include_once('../controladores/controladorservicio.php');
+                    $controladorGenerico = new ControladorServicios();
+                    $resultado = $controladorGenerico->reporteGanancias();
+                    while ($fila = $resultado->fetch_assoc()){
+                        echo "<tr border: 1px solid #000;>";
+                        echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Nombre']."</td>";
+                        echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Cantidad']."</td>";
+                        echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Costo']."</td>";
+                        echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['Precio']."</td>";
+                        echo "<td style='border: 1px solid #000; vertical-align: center; text-align: center;'>".$fila['ganancia']."</td>";
+                        echo "<td border: 1px solid #000;> <br>";
+                    } 
+                ?>
             </table>
         </section>
     </div>
