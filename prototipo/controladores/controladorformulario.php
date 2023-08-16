@@ -147,9 +147,9 @@ if ($controlador == "categoria") {
     $mail->Port       = 587;
     $mail->SMTPDebug  = 1;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'atenciomunive@hotmail.com';
-    $mail->Password   = 'andres123lol';
-    $mail->SetFrom("atenciomunive@hotmail.com", "no-reply");
+    $mail->Username   = '';
+    $mail->Password   = '';
+    $mail->SetFrom("", "no-reply");
     $mail->AddReplyTo('no-reply@mycomp.com','no-reply');
     $mail->Subject    = 'Codigo verificacion';
     $mail->MsgHTML($body);
